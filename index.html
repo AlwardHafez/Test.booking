@@ -121,7 +121,16 @@
             background-attachment: fixed;
             min-height: 100vh;
             color: #333;
-            padding-top: 80px; /* Match initial navbar height */
+            padding-top: 100px; /* Match initial navbar height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Main content wrapper */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         /* Sticky Navigation */
         .navbar {
@@ -135,7 +144,7 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             z-index: 999;
             transition: all 0.3s ease;
-            height: 80px; /* Start with taller height */
+            height: 100px; /* Start with taller height */
         }
 
         .navbar.scrolled {
@@ -146,15 +155,16 @@
         }
 
         .navbar.scrolled .logo img {
-            height: 80px; /* Logo stays same size when navbar shrinks */
-            top: -20px; /* Logo hangs 20px above navbar when scrolled */
+            height: 80px; /* Logo stays same size */
+            top: 10px; /* Logo position stays exactly the same */
+            left: 50px; /* Logo position stays exactly the same */
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end; /* Push nav links to the right */
             align-items: center;
             height: 100%;
         }
@@ -171,12 +181,13 @@
         }
 
         .logo img {
-            height: 80px; /* Logo fits perfectly in initial navbar */
+            height: 80px; /* Logo size stays constant */
             width: auto;
-            position: absolute;
-            top: 0; /* Position at very top of navbar */
+            position: fixed; /* Fixed position relative to viewport, not navbar */
+            top: 10px; /* Fixed distance from top of viewport */
+            left: 50px; /* Fixed distance from left (adjust as needed) */
             z-index: 1001; /* Higher than navbar */
-            transition: all 0.3s ease; /* Smooth transition */
+            transition: none; /* No transition - logo never moves */
         }
 
         .nav-links {
@@ -434,36 +445,9 @@
             margin-top: 3rem;
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            color: #3498db;
-            transform: translateY(-2px);
-        }
-
-        .social-icon {
-            width: 30px;
-            height: 30px;
-            background: #34495e;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
+        .credit-line {
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
 
         /* Modal Styles */
@@ -636,35 +620,482 @@
         border-radius: 50%;
     }
 
-    /* Booking Styles */
-    .booking-section { background: white; padding: 3rem 2rem; margin: 3rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-    .booking-header { text-align: center; margin-bottom: 2rem; }
-    .booking-header h2 { font-size: 2rem; margin-bottom: .5rem; color: #333; }
-    .booking-header p { color: #666; }
-    .booking-system { max-width: 800px; margin: 0 auto; background: #f8f9fa; border-radius: 12px; padding: 1.5rem; }
-    .form-group { margin-bottom: 1rem; }
-    .form-group label { display:block; margin-bottom: .5rem; font-weight: 600; color:#333; }
-    .form-group input, .form-group select, .form-group textarea { width:100%; padding:.75rem; border:2px solid #e1e8ed; border-radius:10px; font-size:1rem; }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color:#34495e; box-shadow:0 0 0 3px rgba(52,73,94,.1) }
-    .calendar-container { background:#fff; border-radius:12px; padding:1rem; border:2px solid #e1e8ed; }
-    .calendar-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; }
-    .calendar-nav { background:#34495e; color:#fff; border:none; padding:.5rem 1rem; border-radius:8px; cursor:pointer; }
-    .calendar-title { font-weight:700; color:#2c3e50; }
-    .calendar-weekdays { display:grid; grid-template-columns:repeat(7,1fr); gap:.5rem; margin-bottom:.5rem; }
-    .weekday { text-align:center; padding:.5rem; font-weight:600; background:#f0f2f4; border-radius:8px; }
-    .calendar-days { display:grid; grid-template-columns:repeat(7,1fr); gap:.5rem; }
-    .calendar-day { min-height:60px; border:2px solid #e1e8ed; border-radius:10px; display:flex; align-items:center; justify-content:center; cursor:pointer; background:#fff; font-weight:600; }
-    .calendar-day.selected { background:#34495e; color:#fff; border-color:#34495e; }
-    .calendar-day.available { background:#e8f5e8; border-color:#27ae60; }
-    .calendar-day.fully-booked { background:#ffebee; border-color:#e74c3c; color:#c62828; cursor:not-allowed; }
-    .calendar-day.past { background:#f5f5f5; color:#999; cursor:not-allowed; opacity:.6; }
-    .time-slots { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:.75rem; margin-top:.5rem; }
-    .time-slot { padding:.75rem; border:2px solid #e1e8ed; border-radius:10px; text-align:center; cursor:pointer; background:#fff; font-weight:600; }
-    .time-slot.selected { background:#34495e; color:#fff; border-color:#34495e; }
-    .time-slot.unavailable { background:#ffebee; color:#c62828; cursor:not-allowed; opacity:.7; }
-    .book-btn { width:100%; padding:1rem; background:linear-gradient(45deg,#2c3e50,#34495e); color:#fff; border:none; border-radius:10px; font-size:1.1rem; font-weight:700; cursor:pointer; margin-top:1rem; }
-    .success-message { background:#d4edda; color:#155724; border:2px solid #c3e6cb; padding:1rem; border-radius:10px; margin-top:1rem; display:none; text-align:center; }
-    .error-message { background:#f8d7da; color:#721c24; border:2px solid #f5c6cb; padding:1rem; border-radius:10px; margin-top:1rem; display:none; text-align:center; }
+    /* Booking Styles - Mobile First Design */
+    .booking-section { 
+        background: white; 
+        padding: 1rem; 
+        margin: 1rem 0; 
+        border-radius: 20px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+    }
+    
+    .booking-header { 
+        text-align: center; 
+        margin-bottom: 2rem; 
+        padding: 1rem;
+    }
+    
+    .booking-header h2 { 
+        font-size: 1.8rem; 
+        margin-bottom: 0.5rem; 
+        color: #2c3e50; 
+        font-weight: 700;
+    }
+    
+    .booking-header p { 
+        color: #666; 
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    
+    .booking-system { 
+        max-width: 100%; 
+        margin: 0 auto; 
+        background: transparent; 
+        border-radius: 0; 
+        padding: 0; 
+    }
+    
+    /* Step Indicator */
+    .booking-steps {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .step:hover {
+        transform: scale(1.05);
+    }
+    
+    .step.completed {
+        cursor: pointer;
+    }
+    
+    .step.completed::after {
+        content: 'Click to review';
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.6rem;
+        color: #666;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .step.completed:hover::after {
+        opacity: 1;
+    }
+    
+    .step-number {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #e1e8ed;
+        color: #666;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        transition: all 0.3s ease;
+    }
+    
+    .step.active .step-number {
+        background: #34495e;
+        color: white;
+        transform: scale(1.1);
+    }
+    
+    .step.completed .step-number {
+        background: #27ae60;
+        color: white;
+    }
+    
+    .step-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #666;
+        text-align: center;
+        margin-bottom: 0.3rem;
+    }
+    
+    .step.active .step-label {
+        color: #2c3e50;
+    }
+    
+    .step-selection {
+        font-size: 0.7rem;
+        color: #27ae60;
+        font-weight: 500;
+        text-align: center;
+        max-width: 80px;
+        line-height: 1.2;
+        display: none;
+    }
+    
+    .step.completed .step-selection {
+        display: block;
+    }
+    
+    /* Calendar Container */
+    .calendar-container { 
+        background: white; 
+        border-radius: 20px; 
+        padding: 1.5rem; 
+        border: none; 
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        margin-bottom: 1.5rem;
+    }
+    
+    .calendar-header { 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        margin-bottom: 1.5rem; 
+        padding: 0 0.5rem;
+    }
+    
+    .calendar-nav { 
+        background: #34495e; 
+        color: white; 
+        border: none; 
+        padding: 0.8rem 1.2rem; 
+        border-radius: 12px; 
+        cursor: pointer; 
+        font-size: 1.2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .calendar-nav:hover {
+        background: #2c3e50;
+        transform: scale(1.05);
+    }
+    
+    .calendar-title { 
+        font-weight: 700; 
+        color: #2c3e50; 
+        font-size: 1.3rem;
+    }
+    
+    .calendar-weekdays { 
+        display: grid; 
+        grid-template-columns: repeat(7, 1fr); 
+        gap: 0.5rem; 
+        margin-bottom: 0.5rem; 
+    }
+    
+    .weekday { 
+        text-align: center; 
+        padding: 0.8rem 0.5rem; 
+        font-weight: 700; 
+        background: #f8f9fa; 
+        border-radius: 12px; 
+        font-size: 0.8rem;
+        color: #2c3e50;
+    }
+    
+    .calendar-days { 
+        display: grid; 
+        grid-template-columns: repeat(7, 1fr); 
+        gap: 0.5rem; 
+    }
+    
+    .calendar-day { 
+        min-height: 50px; 
+        border: 2px solid #e1e8ed; 
+        border-radius: 12px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        cursor: pointer; 
+        background: white; 
+        font-weight: 600; 
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .calendar-day:hover {
+        transform: scale(1.05);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+    
+    .calendar-day.selected { 
+        background: #34495e !important; 
+        color: white !important; 
+        border-color: #34495e !important; 
+        transform: scale(1.02) !important;
+        box-shadow: 0 5px 15px rgba(52,73,94,0.3) !important;
+    }
+    
+    .calendar-day.available { 
+        background: #e8f5e8 !important; 
+        border-color: #27ae60 !important; 
+    }
+    
+    /* Ensure selected state overrides available state */
+    .calendar-day.available.selected { 
+        background: #34495e !important; 
+        color: white !important; 
+        border-color: #34495e !important; 
+        transform: scale(1.02) !important;
+        box-shadow: 0 5px 15px rgba(52,73,94,0.3) !important;
+    }
+    
+    .calendar-day.fully-booked { 
+        background: #ffebee !important; 
+        border-color: #e74c3c !important; 
+        color: #c62828 !important; 
+        cursor: not-allowed !important; 
+        opacity: 0.7 !important; 
+    }
+    
+    .calendar-day.past { 
+        background: #f5f5f5 !important; 
+        color: #999 !important; 
+        cursor: not-allowed !important; 
+        opacity: 0.6 !important; 
+    }
+    
+    /* Time Slots */
+    .time-slots-container {
+        background: white;
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        margin-bottom: 1.5rem;
+    }
+    
+    .time-slots { 
+        display: grid; 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 0.8rem; 
+        margin-top: 0.5rem; 
+    }
+    
+    .time-slot { 
+        padding: 1rem; 
+        border: 2px solid #e1e8ed; 
+        border-radius: 12px; 
+        text-align: center; 
+        cursor: pointer; 
+        background: white; 
+        font-weight: 600; 
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+    
+    .time-slot:hover {
+        transform: scale(1.05);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+    
+    .time-slot.selected { 
+        background: #34495e !important;
+        color: white !important;
+        border-color: #34495e !important;
+        transform: scale(1.02) !important;
+        box-shadow: 0 5px 15px rgba(52,73,94,0.3) !important;
+    }
+    
+    .time-slot.unavailable { 
+        background: #ffebee !important; 
+        color: #c62828 !important; 
+        cursor: not-allowed !important; 
+        opacity: 0.7 !important; 
+    }
+    
+    /* Service Selection */
+    .service-selection {
+        background: white;
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        margin-bottom: 1.5rem;
+    }
+    
+    .service-options {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .service-option {
+        border: 2px solid #e1e8ed;
+        border-radius: 15px;
+        padding: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: white;
+        position: relative;
+    }
+    
+    .service-option:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .service-option.selected {
+        border-color: #34495e !important;
+        background: #34495e !important;
+        color: white !important;
+        transform: scale(1.02) !important;
+        box-shadow: 0 5px 15px rgba(52,73,94,0.3) !important;
+    }
+    
+    .service-option.selected .service-name,
+    .service-option.selected .service-price,
+    .service-option.selected .service-description {
+        color: white !important;
+    }
+    
+    .service-name {
+        font-weight: 700;
+        color: #2c3e50;
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .service-price {
+        color: #27ae60;
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+    
+    .service-description {
+        color: #666;
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+        line-height: 1.4;
+    }
+    
+    /* Form Styling */
+    .form-section {
+        background: white;
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-group { 
+        margin-bottom: 1.2rem; 
+    }
+    
+    .form-group label { 
+        display: block; 
+        margin-bottom: 0.5rem; 
+        font-weight: 600; 
+        color: #2c3e50; 
+        font-size: 0.9rem;
+    }
+    
+    .form-group input, .form-group select, .form-group textarea { 
+        width: 100%; 
+        padding: 1rem; 
+        border: 2px solid #e1e8ed; 
+        border-radius: 12px; 
+        font-size: 1rem; 
+        transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { 
+        outline: none; 
+        border-color: #34495e; 
+        box-shadow: 0 0 0 3px rgba(52,73,94,0.1); 
+    }
+    
+    .book-btn { 
+        width: 100%; 
+        padding: 1.2rem; 
+        background: linear-gradient(45deg, #2c3e50, #34495e); 
+        color: white; 
+        border: none; 
+        border-radius: 12px; 
+        font-size: 1.1rem; 
+        font-weight: 600; 
+        cursor: pointer; 
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+    }
+    
+    .book-btn:hover {
+        background: linear-gradient(45deg, #34495e, #2c3e50);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(52,73,94,0.3);
+    }
+    
+    .book-btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .success-message { 
+        background: #d4edda; 
+        color: #155724; 
+        border: 2px solid #c3e6cb; 
+        padding: 1.5rem; 
+        border-radius: 15px; 
+        margin-top: 1rem; 
+        display: none; 
+        text-align: center; 
+    }
+    
+    .error-message { 
+        background: #f8d7da; 
+        color: #721c24; 
+        border: 2px solid #f5c6cb; 
+        padding: 1.5rem; 
+        border-radius: 15px; 
+        margin-top: 1rem; 
+        display: none; 
+        text-align: center; 
+    }
+    
+    /* Navigation Buttons - Desktop */
+    .nav-btn { 
+        background: #34495e; 
+        color: white; 
+        border: none; 
+        padding: 0.8rem 1.2rem; 
+        border-radius: 12px; 
+        cursor: pointer; 
+        font-size: 1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        min-width: 120px;
+    }
+    
+    .nav-btn:hover {
+        background: #2c3e50;
+        transform: scale(1.05);
+    }
+    
+    .nav-btn:disabled {
+        background: #bdc3c7;
+        cursor: not-allowed;
+        transform: none;
+    }
 
 
     /* Responsive Design */
@@ -710,15 +1141,10 @@
         font-size: 32px;
     }
 
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .social-links {
-        flex-direction: column;
-        gap: 1rem;
-    }
+            .cta-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
 
     /* Mobile Navigation */
     .nav-links {
@@ -740,6 +1166,7 @@
 
     .mobile-menu {
         display: flex;
+        margin-right: 15px; /* Add right margin for better clickability */
     }
 
     .mobile-menu.active span:nth-child(1) {
@@ -753,6 +1180,178 @@
     .mobile-menu.active span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -6px);
     }
+
+    /* Mobile Calendar Fixes */
+    .booking-system {
+        max-width: 100% !important; /* Full width on mobile */
+        margin: 0 !important;
+        padding: 0.5rem !important; /* Reduced padding */
+        background: transparent !important; /* Remove white background */
+    }
+
+    .calendar-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        background: white !important; /* White background for calendar only */
+        border-radius: 20px !important;
+        padding: 1.5rem !important; /* More padding for calendar */
+        margin-bottom: 1.5rem !important;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08) !important;
+        overflow: hidden !important; /* Prevent overflow */
+    }
+
+    .calendar-days {
+        grid-template-columns: repeat(7, 1fr) !important;
+        gap: 0.5rem !important; /* Reduced gap to fit better */
+        min-width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .calendar-day {
+        min-height: 45px !important; /* Slightly smaller for mobile */
+        font-size: 0.85rem !important; /* Smaller font */
+        border-radius: 10px !important;
+        border: 2px solid #e1e8ed !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        background: #fff !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+        position: relative !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .calendar-day:hover {
+        transform: scale(1.05) !important;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.15) !important;
+    }
+
+    .calendar-day.selected { 
+        background: #34495e !important; 
+        color: white !important; 
+        border-color: #34495e !important; 
+        transform: scale(1.05) !important;
+        box-shadow: 0 5px 15px rgba(52,73,94,0.3) !important;
+    }
+    
+    .calendar-day.available { 
+        background: #e8f5e8 !important; 
+        border-color: #27ae60 !important; 
+    }
+    
+    /* Ensure selected state overrides available state */
+    .calendar-day.available.selected { 
+        background: #34495e !important; 
+        color: white !important; 
+        border-color: #34495e !important; 
+        transform: scale(1.05) !important;
+        box-shadow: 0 5px 15px rgba(52,73,94,0.3) !important;
+    }
+
+    .calendar-day.fully-booked { 
+        background: #ffebee !important; 
+        border-color: #e74c3c !important; 
+        color: #c62828 !important; 
+        cursor: not-allowed !important; 
+        opacity: 0.7 !important; 
+    }
+
+    .calendar-day.past { 
+        background: #f5f5f5 !important; 
+        color: #999 !important; 
+        cursor: not-allowed !important; 
+        opacity: 0.6 !important; 
+    }
+
+    .weekday {
+        text-align: center !important;
+        padding: 0.6rem 0.3rem !important; /* Reduced padding */
+        font-weight: 700 !important;
+        background: #f8f9fa !important;
+        border-radius: 10px !important;
+        font-size: 0.75rem !important; /* Smaller font */
+        color: #2c3e50 !important;
+    }
+
+    .time-slots {
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 columns on mobile */
+        gap: 0.8rem !important; /* More space between time slots */
+    }
+
+    .time-slot {
+        padding: 1rem !important;
+        border: 2px solid #e1e8ed !important;
+        border-radius: 12px !important;
+        text-align: center !important;
+        cursor: pointer !important;
+        background: #fff !important;
+        font-weight: 600 !important;
+        font-size: 0.9rem !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .time-slot:hover {
+        transform: scale(1.05) !important;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.15) !important;
+    }
+
+    .time-slot.selected { 
+        background: #34495e !important;
+        color: white !important;
+        border-color: #34495e !important;
+        transform: scale(1.05) !important;
+        box-shadow: 0 5px 15px rgba(52,73,94,0.3) !important;
+    }
+
+    .time-slot.unavailable {
+        background: #ffebee !important;
+        color: #c62828 !important;
+        cursor: not-allowed !important;
+        opacity: 0.7 !important;
+    }
+
+    /* Form styling for mobile */
+    .form-group input, .form-group select, .form-group textarea {
+        padding: 1rem !important;
+        font-size: 1rem !important;
+        border-radius: 12px !important;
+    }
+
+    .book-btn {
+        padding: 1.2rem !important;
+        font-size: 1.1rem !important;
+        border-radius: 12px !important;
+        margin-top: 1.5rem !important;
+    }
+    
+    /* Navigation Buttons for Mobile */
+    .nav-btn {
+        background: #34495e !important;
+        color: white !important;
+        border: none !important;
+        padding: 0.8rem 1.5rem !important;
+        border-radius: 12px !important;
+        font-weight: 600 !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .nav-btn:hover {
+        background: #2c3e50 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 5px 15px rgba(52,73,94,0.3) !important;
+    }
+    
+    .nav-btn:disabled {
+        background: #ccc !important;
+        cursor: not-allowed !important;
+        transform: none !important;
+        box-shadow: none !important;
+    }
 }
     </style>
 </head>
@@ -762,9 +1361,6 @@
 <!-- Sticky Navigation -->
 <nav class="navbar">
     <div class="nav-container">
-    <a href="#" class="logo" onclick="showSection('home', event)">
-    <img src="logo.png" alt="Logo" style="height: 80px; width: auto;">
-    </a>
         <ul class="nav-links">
             <li><a href="#" onclick="showSection('home', event)" class="nav-link">Home</a></li>
             <li><a href="#" onclick="showSection('about', event)" class="nav-link">About Us</a></li>
@@ -777,10 +1373,17 @@
             <span></span>
         </div>
     </div>
-</nav>
+    </nav>
 
-<!-- Home Section -->
-<div id="home" class="page-section active">
+    <!-- Logo positioned independently -->
+    <a href="#" class="logo" onclick="showSection('home', event)" style="position: fixed; top: 10px; left: 50px; z-index: 1001;">
+        <img src="logo.png" alt="Logo" style="height: 80px; width: auto;">
+    </a>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+        <!-- Home Section -->
+        <div id="home" class="page-section active">
     <!-- Desktop Carousel -->
     <div class="hero-carousel hero-carousel-desktop swiper" id="desktop-swiper">
     <div class="swiper-wrapper">
@@ -875,87 +1478,135 @@
             </div>
 
             <div class="booking-system" id="bookingSystem">
-                <h3>Choose Date, Time, and Service</h3>
-
-                <div class="form-group">
-                    <label>Select Date:</label>
-                    <div class="calendar-container">
-                        <div class="calendar-header">
-                            <button type="button" class="calendar-nav" id="prevMonth">‹</button>
-                            <div class="calendar-title" id="calendarTitle">Loading...</div>
-                            <button type="button" class="calendar-nav" id="nextMonth">›</button>
-                        </div>
-
-                        <div class="calendar-weekdays">
-                            <div class="weekday">Sun</div>
-                            <div class="weekday">Mon</div>
-                            <div class="weekday">Tue</div>
-                            <div class="weekday">Wed</div>
-                            <div class="weekday">Thu</div>
-                            <div class="weekday">Fri</div>
-                            <div class="weekday">Sat</div>
-                        </div>
-
-                        <div class="calendar-days" id="calendarDays"></div>
+                <!-- Step Indicator -->
+                <div class="booking-steps">
+                    <div class="step active" id="step1" onclick="bookingSystem.goToStep(1)">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Date</div>
+                        <div class="step-selection" id="dateSelection"></div>
+                    </div>
+                    <div class="step" id="step2" onclick="bookingSystem.goToStep(2)">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Time</div>
+                        <div class="step-selection" id="timeSelection"></div>
+                    </div>
+                    <div class="step" id="step3" onclick="bookingSystem.goToStep(3)">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Service</div>
+                        <div class="step-selection" id="serviceSelection"></div>
+                    </div>
+                    <div class="step" id="step4" onclick="bookingSystem.goToStep(4)">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Details</div>
+                        <div class="step-selection" id="detailsSelection"></div>
                     </div>
                 </div>
 
-                <form id="bookingForm">
-                    <div id="serviceSection" style="display: none;">
-                        <div class="form-group">
-                            <label for="service">Select Service:</label>
-                            <select id="service" name="service" required>
-                                <option value="">Choose a service...</option>
-                                <option value="basic">Basic Wash - $25</option>
-                                <option value="standard">Standard Polish - $75</option>
-                                <option value="premium">Premium Detail - $150</option>
-                                <option value="ultimate">Ultimate Package - $300</option>
-                            </select>
-                        </div>
+                <!-- Navigation Buttons -->
+                <div class="step-navigation" style="display: flex; justify-content: space-between; margin-bottom: 1rem; padding: 0 1rem;">
+                    <button type="button" class="nav-btn prev-btn" onclick="bookingSystem.prevStep()">
+                        ← Go Back
+                    </button>
+                    <button type="button" class="nav-btn next-btn" onclick="bookingSystem.nextStep()" style="display: none;">
+                        Continue →
+                    </button>
+                </div>
 
-                        <div class="form-group">
-                            <label>Available Time Slots:</label>
-                            <div class="time-slots" id="timeSlots"></div>
-                        </div>
+                <!-- Step 1: Date Selection -->
+                <div class="calendar-container" id="dateStep">
+                    <h3 style="margin-bottom: 1rem; color: #2c3e50; font-size: 1.2rem;">Choose Your Date</h3>
+                    <div class="calendar-header">
+                        <button type="button" class="calendar-nav" id="prevMonth">‹</button>
+                        <div class="calendar-title" id="calendarTitle">Loading...</div>
+                        <button type="button" class="calendar-nav" id="nextMonth">›</button>
                     </div>
 
-                    <div id="personalSection" style="display: none;">
+                    <div class="calendar-weekdays">
+                        <div class="weekday">Sun</div>
+                        <div class="weekday">Mon</div>
+                        <div class="weekday">Tue</div>
+                        <div class="weekday">Wed</div>
+                        <div class="weekday">Thu</div>
+                        <div class="weekday">Fri</div>
+                        <div class="weekday">Sat</div>
+                    </div>
+
+                    <div class="calendar-days" id="calendarDays"></div>
+                </div>
+
+                <!-- Step 2: Time Selection -->
+                <div class="time-slots-container" id="timeStep" style="display: none;">
+                    <h3 style="margin-bottom: 1rem; color: #2c3e50; font-size: 1.2rem;">Choose Your Time</h3>
+                    <div class="time-slots" id="timeSlots"></div>
+                </div>
+
+                <!-- Step 3: Service Selection -->
+                <div class="service-selection" id="serviceStep" style="display: none;">
+                    <h3 style="margin-bottom: 1rem; color: #2c3e50; font-size: 1.2rem;">Choose Your Service</h3>
+                    <div class="service-options">
+                        <div class="service-option" data-service="basic">
+                            <div class="service-name">Basic Wash</div>
+                            <div class="service-price">$25</div>
+                            <div class="service-description">Exterior wash, interior vacuum, and basic cleaning</div>
+                        </div>
+                        <div class="service-option" data-service="standard">
+                            <div class="service-name">Standard Polish</div>
+                            <div class="service-price">$75</div>
+                            <div class="service-description">Basic wash plus exterior polish and wax</div>
+                        </div>
+                        <div class="service-option" data-service="premium">
+                            <div class="service-name">Premium Detail</div>
+                            <div class="service-price">$150</div>
+                            <div class="service-description">Complete interior and exterior detailing</div>
+                        </div>
+                        <div class="service-option" data-service="ultimate">
+                            <div class="service-name">Ultimate Package</div>
+                            <div class="service-price">$300</div>
+                            <div class="service-description">Showroom-quality detailing with premium products</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Personal Details -->
+                <div class="form-section" id="detailsStep" style="display: none;">
+                    <h3 style="margin-bottom: 1rem; color: #2c3e50; font-size: 1.2rem;">Your Details</h3>
+                    <form id="bookingForm">
                         <div class="form-group">
-                            <label for="customerName">Full Name:</label>
-                            <input type="text" id="customerName" name="customerName" required>
+                            <label for="customerName">Full Name</label>
+                            <input type="text" id="customerName" name="customerName" required placeholder="Enter your full name">
                         </div>
 
                         <div class="form-group">
-                            <label for="phone">Phone Number:</label>
-                            <input type="tel" id="phone" name="phone" required>
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email">
                         </div>
 
                         <div class="form-group">
-                            <label for="carDetails">Car Details (Make, Model, Year):</label>
-                            <input type="text" id="carDetails" name="carDetails" placeholder="e.g., Toyota Camry 2020" required>
+                            <label for="carDetails">Car Details</label>
+                            <input type="text" id="carDetails" name="carDetails" required placeholder="Make, Model, Year (e.g., Toyota Camry 2020)">
                         </div>
 
                         <div class="form-group">
-                            <label for="notes">Additional Notes (Optional):</label>
+                            <label for="notes">Additional Notes (Optional)</label>
                             <textarea id="notes" name="notes" rows="3" placeholder="Any special requests or notes..."></textarea>
                         </div>
 
                         <button type="submit" class="book-btn" id="submitBtn">Book Appointment</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
 
                 <div class="success-message" id="successMessage">
-                    <h4>Booking Confirmed</h4>
-                    <p>Your appointment has been successfully booked. We’ll contact you shortly.</p>
+                    <h4>🎉 Booking Confirmed!</h4>
+                    <p>Your appointment has been successfully booked. We'll contact you shortly to confirm.</p>
                 </div>
 
                 <div class="error-message" id="errorMessage">
-                    <h4>Booking Failed</h4>
+                    <h4>❌ Booking Failed</h4>
                     <p>Please check all fields and try again.</p>
                 </div>
             </div>
@@ -1002,20 +1653,10 @@
     </div>
 </div>
 
+    </div> <!-- End of main-content -->
+
 <!-- Social Media Footer -->
     <div class="social-footer">
-        <div class="social-links">
-            <a href="mailto:alward.hafez.01@gmail.com" class="social-link">
-                <span>Email</span>
-            </a>
-            <a href="xxxx" target="_blank" class="social-link">
-                <span>LinkedIn</span>
-            </a>
-            <a href="xxxxxxxx" target="_blank" class="social-link">
-                <span>GitHub</span>
-            </a>
-        </div>
-
         <!-- Credit line with only Icons8 underlined, not blue -->
         <div class="credit-line">
             <span>
@@ -1079,7 +1720,7 @@
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 80) {
+            if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
@@ -1166,6 +1807,14 @@
             if (event) event.preventDefault(); // ✅ stops page jump
             
             console.log('Showing section:', id); // Debug log
+            
+            // Close mobile menu if open
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
             
             // Update browser history
             const currentUrl = window.location.href.split('#')[0];
@@ -1303,7 +1952,7 @@
         },
     });
 
-    // Booking System
+    // Booking System - Mobile First Design
     class CarPolishBookingSystem {
         constructor() {
             this.maxAppointmentsPerDay = 2;
@@ -1311,6 +1960,8 @@
             this.bookings = this.loadBookings();
             this.selectedTimeSlot = null;
             this.selectedDate = null;
+            this.selectedService = null;
+            this.currentStep = 1;
             this.currentCalendarDate = new Date();
             this.initializeSystem();
         }
@@ -1318,23 +1969,226 @@
         initializeSystem() {
             this.setupEventListeners();
             this.renderCalendar();
-            this.updateTimeSlots();
+            this.updateStepIndicator();
         }
 
         setupEventListeners() {
             const bookingForm = document.getElementById('bookingForm');
             const prevMonth = document.getElementById('prevMonth');
             const nextMonth = document.getElementById('nextMonth');
+            
             if (bookingForm) bookingForm.addEventListener('submit', (e) => this.handleBookingSubmission(e));
             if (prevMonth) prevMonth.addEventListener('click', () => this.navigateMonth(-1));
             if (nextMonth) nextMonth.addEventListener('click', () => this.navigateMonth(1));
-            const serviceDropdown = document.getElementById('service');
-            if (serviceDropdown) {
-                serviceDropdown.addEventListener('change', () => {
-                    if (this.selectedDate && this.selectedTimeSlot) {
-                        document.getElementById('personalSection').style.display = 'block';
+            
+            // Service selection
+            document.querySelectorAll('.service-option').forEach(option => {
+                option.addEventListener('click', () => this.selectService(option));
+            });
+        }
+
+        updateStepIndicator() {
+            // Update step indicators
+            document.querySelectorAll('.step').forEach((step, index) => {
+                step.classList.remove('active', 'completed', 'disabled');
+                const stepNumber = index + 1;
+                
+                if (stepNumber === this.currentStep) {
+                    step.classList.add('active');
+                } else if (stepNumber < this.currentStep) {
+                    step.classList.add('completed');
+                } else if (stepNumber > this.currentStep && !this.canAccessStep(stepNumber)) {
+                    step.classList.add('disabled');
+                }
+            });
+            
+            // Update navigation buttons
+            this.updateNavigationButtons();
+        }
+        
+        canAccessStep(stepNumber) {
+            switch(stepNumber) {
+                case 1: return true; // Always accessible
+                case 2: return this.selectedDate !== null;
+                case 3: return this.selectedDate !== null && this.selectedTimeSlot !== null;
+                case 4: return this.selectedDate !== null && this.selectedTimeSlot !== null && this.selectedService !== null;
+                default: return false;
+            }
+        }
+        
+        goToStep(stepNumber) {
+            if (stepNumber >= 1 && stepNumber <= 4 && this.canAccessStep(stepNumber)) {
+                this.currentStep = stepNumber;
+                this.showCurrentStep();
+                this.updateStepIndicator();
+            }
+        }
+
+        nextStep() {
+            if (this.currentStep < 4) {
+                this.currentStep++;
+                this.showCurrentStep();
+                this.updateStepIndicator();
+            }
+        }
+
+        prevStep() {
+            if (this.currentStep > 1) {
+                this.currentStep--;
+                this.showCurrentStep();
+                this.updateStepIndicator();
+            }
+        }
+
+        showCurrentStep() {
+            // Hide all steps
+            document.getElementById('dateStep').style.display = 'none';
+            document.getElementById('timeStep').style.display = 'none';
+            document.getElementById('serviceStep').style.display = 'none';
+            document.getElementById('detailsStep').style.display = 'none';
+
+            // Show current step
+            switch(this.currentStep) {
+                case 1:
+                    document.getElementById('dateStep').style.display = 'block';
+                    this.highlightPreviousSelections();
+                    break;
+                case 2:
+                    document.getElementById('timeStep').style.display = 'block';
+                    this.updateTimeSlots();
+                    this.highlightPreviousSelections();
+                    break;
+                case 3:
+                    document.getElementById('serviceStep').style.display = 'block';
+                    this.highlightPreviousSelections();
+                    break;
+                case 4:
+                    document.getElementById('detailsStep').style.display = 'block';
+                    this.highlightPreviousSelections();
+                    break;
+            }
+        }
+        
+        highlightPreviousSelections() {
+            // Highlight previously selected date
+            if (this.selectedDate) {
+                document.querySelectorAll('.calendar-day').forEach(day => {
+                    if (day.dataset.date === this.selectedDate) {
+                        day.classList.add('selected');
                     }
                 });
+            }
+            
+            // Highlight previously selected time slot
+            if (this.selectedTimeSlot) {
+                document.querySelectorAll('.time-slot').forEach(slot => {
+                    if (slot.dataset.time === this.selectedTimeSlot) {
+                        slot.classList.add('selected');
+                    }
+                });
+            }
+            
+            // Highlight previously selected service
+            if (this.selectedService) {
+                document.querySelectorAll('.service-option').forEach(option => {
+                    if (option.dataset.service === this.selectedService) {
+                        option.classList.add('selected');
+                    }
+                });
+            }
+            
+            // Pre-fill form fields if they exist
+            if (this.currentStep === 4) {
+                const name = document.getElementById('customerName').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const carDetails = document.getElementById('carDetails').value.trim();
+                const notes = document.getElementById('notes').value.trim();
+                
+                // Update details selection display
+                if (name) {
+                    document.getElementById('detailsSelection').textContent = name;
+                }
+            }
+        }
+
+        selectDate(dateStr, dayElement) {
+            document.querySelectorAll('.calendar-day.selected').forEach(day => day.classList.remove('selected'));
+            dayElement.classList.add('selected');
+            this.selectedDate = dateStr;
+            
+            // Update selection display
+            this.updateSelectionDisplay();
+            
+            // If we're going back to change the date, don't auto-advance
+            if (this.currentStep === 1) {
+                // Auto-advance to next step after a longer delay
+                setTimeout(() => this.nextStep(), 700);
+            }
+        }
+
+        selectTimeSlot(slotElement) {
+            document.querySelectorAll('.time-slot.selected').forEach(slot => slot.classList.remove('selected'));
+            slotElement.classList.add('selected');
+            this.selectedTimeSlot = slotElement.dataset.time;
+            
+            // Update selection display
+            this.updateSelectionDisplay();
+            
+            // If we're going back to change the time, don't auto-advance
+            if (this.currentStep === 2) {
+                // Auto-advance to next step after a longer delay
+                setTimeout(() => this.nextStep(), 800);
+            }
+        }
+
+        selectService(optionElement) {
+            // Remove previous selection
+            document.querySelectorAll('.service-option').forEach(opt => opt.classList.remove('selected'));
+            
+            // Select new service
+            optionElement.classList.add('selected');
+            this.selectedService = optionElement.dataset.service;
+            
+            // Update selection display
+            this.updateSelectionDisplay();
+            
+            // If we're going back to change the service, don't auto-advance
+            if (this.currentStep === 3) {
+                // Auto-advance to next step after a longer delay
+                setTimeout(() => this.nextStep(), 800);
+            }
+        }
+
+        updateSelectionDisplay() {
+            // Update date selection
+            if (this.selectedDate) {
+                const date = new Date(this.selectedDate);
+                const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+                document.getElementById('dateSelection').textContent = formattedDate;
+            }
+            
+            // Update time selection
+            if (this.selectedTimeSlot) {
+                const formattedTime = this.formatTime(this.selectedTimeSlot);
+                document.getElementById('timeSelection').textContent = formattedTime;
+            }
+            
+            // Update service selection
+            if (this.selectedService) {
+                const serviceNames = {
+                    'basic': 'Basic Wash',
+                    'standard': 'Standard Polish',
+                    'premium': 'Premium Detail',
+                    'ultimate': 'Ultimate Package'
+                };
+                document.getElementById('serviceSelection').textContent = serviceNames[this.selectedService] || this.selectedService;
+            }
+            
+            // Update details selection (show if form is filled)
+            const name = document.getElementById('customerName').value.trim();
+            if (name) {
+                document.getElementById('detailsSelection').textContent = name;
             }
         }
 
@@ -1391,13 +2245,8 @@
             }
         }
 
-        selectDate(dateStr, dayElement) {
-            document.querySelectorAll('.calendar-day.selected').forEach(day => day.classList.remove('selected'));
-            dayElement.classList.add('selected');
-            this.selectedDate = dateStr;
-            document.getElementById('serviceSection').style.display = 'block';
-            this.updateTimeSlots();
-        }
+        getBookingsForDate(date) { return this.bookings.filter(booking => booking.date === date); }
+        getAvailableSlots(date, dayBookings) { if (dayBookings.length >= this.maxAppointmentsPerDay) return []; const booked = dayBookings.map(b=>b.time); return this.availableTimeSlots.filter(s=>!booked.includes(s)); }
 
         updateTimeSlots() {
             const timeSlotsContainer = document.getElementById('timeSlots');
@@ -1413,6 +2262,12 @@
                 slotElement.className = 'time-slot';
                 slotElement.textContent = this.formatTime(slot);
                 slotElement.dataset.time = slot;
+                
+                // Check if this slot was previously selected
+                if (this.selectedTimeSlot === slot) {
+                    slotElement.classList.add('selected');
+                }
+                
                 if (!availableSlots.includes(slot)) {
                     slotElement.classList.add('unavailable');
                     slotElement.title = 'This slot is not available';
@@ -1422,16 +2277,6 @@
                 timeSlotsContainer.appendChild(slotElement);
             });
             this.showBookingStatus(this.selectedDate, dayBookings.length);
-        }
-
-        getBookingsForDate(date) { return this.bookings.filter(booking => booking.date === date); }
-        getAvailableSlots(date, dayBookings) { if (dayBookings.length >= this.maxAppointmentsPerDay) return []; const booked = dayBookings.map(b=>b.time); return this.availableTimeSlots.filter(s=>!booked.includes(s)); }
-
-        selectTimeSlot(slotElement) {
-            document.querySelectorAll('.time-slot.selected').forEach(slot => slot.classList.remove('selected'));
-            slotElement.classList.add('selected');
-            this.selectedTimeSlot = slotElement.dataset.time;
-            if (document.getElementById('service').value) { document.getElementById('personalSection').style.display = 'block'; }
         }
 
         showBookingStatus(date, bookingCount) {
@@ -1448,19 +2293,52 @@
             const name = document.getElementById('customerName').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const email = document.getElementById('email').value.trim();
-            const service = document.getElementById('service').value;
             const carDetails = document.getElementById('carDetails').value.trim();
-            if (!name || !phone || !email || !service || !this.selectedDate || !carDetails || !this.selectedTimeSlot) { this.showErrorMessage('Please fill in all required fields, select a date from the calendar, and choose a time slot.'); return; }
+            
+            if (!name || !phone || !email || !carDetails || !this.selectedDate || !this.selectedTimeSlot || !this.selectedService) { 
+                this.showErrorMessage('Please fill in all required fields and complete all steps.'); 
+                return; 
+            }
+            
             const dayBookings = this.getBookingsForDate(this.selectedDate);
-            if (dayBookings.length >= this.maxAppointmentsPerDay) { this.showErrorMessage('Sorry, this date is now fully booked. Please select another date.'); this.renderCalendar(); this.updateTimeSlots(); return; }
+            if (dayBookings.length >= this.maxAppointmentsPerDay) { 
+                this.showErrorMessage('Sorry, this date is now fully booked. Please select another date.'); 
+                this.renderCalendar(); 
+                this.updateTimeSlots(); 
+                return; 
+            }
+            
             const bookedSlots = dayBookings.map(booking => booking.time);
-            if (bookedSlots.includes(this.selectedTimeSlot)) { this.showErrorMessage('Sorry, this time slot is no longer available. Please select another slot.'); this.updateTimeSlots(); return; }
+            if (bookedSlots.includes(this.selectedTimeSlot)) { 
+                this.showErrorMessage('Sorry, this time slot is no longer available. Please select another slot.'); 
+                this.updateTimeSlots(); 
+                return; 
+            }
+            
             const bookingData = this.collectBookingData();
-            if (this.saveBooking(bookingData)) { this.showSuccessMessage(); this.sendConfirmation(bookingData); this.resetForm(); } else { this.showErrorMessage(); }
+            if (this.saveBooking(bookingData)) { 
+                this.showSuccessMessage(); 
+                this.sendConfirmation(bookingData); 
+                this.resetForm(); 
+            } else { 
+                this.showErrorMessage(); 
+            }
         }
 
         collectBookingData() {
-            return { id: this.generateBookingId(), customerName: document.getElementById('customerName').value.trim(), phone: document.getElementById('phone').value.trim(), email: document.getElementById('email').value.trim(), service: document.getElementById('service').value, date: this.selectedDate, time: this.selectedTimeSlot, carDetails: document.getElementById('carDetails').value.trim(), notes: document.getElementById('notes').value.trim(), bookedAt: new Date().toISOString(), status: 'confirmed' };
+            return { 
+                id: this.generateBookingId(), 
+                customerName: document.getElementById('customerName').value.trim(), 
+                phone: document.getElementById('phone').value.trim(), 
+                email: document.getElementById('email').value.trim(), 
+                service: this.selectedService, 
+                date: this.selectedDate, 
+                time: this.selectedTimeSlot, 
+                carDetails: document.getElementById('carDetails').value.trim(), 
+                notes: document.getElementById('notes').value.trim(), 
+                bookedAt: new Date().toISOString(), 
+                status: 'confirmed' 
+            };
         }
 
         saveBooking(bookingData) {
@@ -1473,8 +2351,74 @@
         sendConfirmation(bookingData) { alert(`Confirmation sent to ${bookingData.email} and ${bookingData.phone}`); }
         showSuccessMessage(message = null) { const successDiv = document.getElementById('successMessage'); const errorDiv = document.getElementById('errorMessage'); if (message) successDiv.querySelector('p').textContent = message; successDiv.style.display = 'block'; errorDiv.style.display = 'none'; setTimeout(() => { successDiv.style.display = 'none'; }, 4000); }
         showErrorMessage(message = 'Please check all fields and try again.') { const errorDiv = document.getElementById('errorMessage'); const successDiv = document.getElementById('successMessage'); errorDiv.querySelector('p').textContent = message; errorDiv.style.display = 'block'; successDiv.style.display = 'none'; setTimeout(() => { errorDiv.style.display = 'none'; }, 4000); }
-        resetForm() { document.getElementById('bookingForm').reset(); this.selectedTimeSlot = null; this.selectedDate = null; document.getElementById('personalSection').style.display = 'none'; document.querySelectorAll('.time-slot.selected').forEach(slot => slot.classList.remove('selected')); document.querySelectorAll('.calendar-day.selected').forEach(day => day.classList.remove('selected')); this.updateTimeSlots(); }
+        resetForm() { 
+            document.getElementById('bookingForm').reset(); 
+            this.selectedTimeSlot = null; 
+            this.selectedDate = null; 
+            this.selectedService = null;
+            this.currentStep = 1;
+            
+            // Reset UI
+            document.querySelectorAll('.time-slot.selected').forEach(slot => slot.classList.remove('selected')); 
+            document.querySelectorAll('.calendar-day.selected').forEach(day => day.classList.remove('selected')); 
+            document.querySelectorAll('.service-option.selected').forEach(service => service.classList.remove('selected'));
+            
+            // Clear selection displays
+            document.getElementById('dateSelection').textContent = '';
+            document.getElementById('timeSelection').textContent = '';
+            document.getElementById('serviceSelection').textContent = '';
+            document.getElementById('detailsSelection').textContent = '';
+            
+            // Show first step
+            this.showCurrentStep();
+            this.updateStepIndicator();
+        }
+
+        updateNavigationButtons() {
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            // Show/hide prev button
+            if (this.currentStep > 1) {
+                prevBtn.style.display = 'block';
+            } else {
+                prevBtn.style.display = 'none';
+            }
+            
+            // Show/hide next button based on completion
+            if (this.canAdvanceToNextStep()) {
+                nextBtn.style.display = 'block';
+            } else {
+                nextBtn.style.display = 'none';
+            }
+        }
+        
+        canAdvanceToNextStep() {
+            switch(this.currentStep) {
+                case 1: return this.selectedDate !== null;
+                case 2: return this.selectedTimeSlot !== null;
+                case 3: return this.selectedService !== null;
+                case 4: return false; // No next step on final step
+                default: return false;
+            }
+        }
     }
+    
+    // Initialize booking system
+    let bookingSystem;
+    document.addEventListener('DOMContentLoaded', function() {
+        bookingSystem = new CarPolishBookingSystem();
+        
+        // Initialize navigation buttons
+        bookingSystem.updateNavigationButtons();
+        
+        // Add form input listeners to update details selection
+        document.getElementById('customerName').addEventListener('input', function() {
+            if (bookingSystem) {
+                bookingSystem.updateSelectionDisplay();
+            }
+        });
+    });
     </script>
 </body>
 </html>
