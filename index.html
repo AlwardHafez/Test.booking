@@ -690,6 +690,7 @@
         background: white;
         box-shadow: 0 0 5px rgba(0,0,0,0.4);
         z-index: 10;
+        cursor: ew-resize;
     }
 
     .ba-slider::before {
@@ -703,6 +704,32 @@
         background: white;
         border: 2px solid #333;
         border-radius: 50%;
+        cursor: ew-resize;
+    }
+
+    /* Make slider more touch-friendly on mobile */
+    @media (max-width: 768px) {
+        .ba-slider {
+            width: 6px; /* Slightly thicker on mobile */
+        }
+        
+        .ba-slider::before {
+            width: 30px; /* Larger handle for easier touch */
+            height: 30px;
+            left: -15px; /* Adjust position for larger handle */
+            border: 3px solid #333;
+        }
+        
+        .ba-slider::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -20px; /* Invisible touch area */
+            width: 40px; /* Wider invisible touch area */
+            height: 100%;
+            background: transparent;
+            cursor: ew-resize;
+        }
     }
 
     /* Booking Styles - Mobile First Design */
@@ -2089,28 +2116,34 @@
             const startDrag = () => {
                 document.addEventListener('mousemove', onDrag);
                 document.addEventListener('mouseup', stopDrag);
+                document.body.style.userSelect = 'none'; // Prevent text selection while dragging
             };
 
             const onDrag = (e) => moveSlider(e.clientX);
             const stopDrag = () => {
                 document.removeEventListener('mousemove', onDrag);
                 document.removeEventListener('mouseup', stopDrag);
+                document.body.style.userSelect = ''; // Restore text selection
             };
 
-            container.addEventListener('mousedown', e => {
+            // Desktop: Only allow dragging from the slider handle
+            slider.addEventListener('mousedown', e => {
+                e.stopPropagation(); // Prevent event bubbling to container
                 moveSlider(e.clientX);
                 startDrag();
             });
 
-            // Touch support with scroll prevention
+            // Touch support - Only from slider handle
             let isTouching = false;
             
-            container.addEventListener('touchstart', e => {
+            slider.addEventListener('touchstart', e => {
                 isTouching = true;
                 e.preventDefault(); // Prevent page scrolling
+                e.stopPropagation(); // Prevent event bubbling
                 moveSlider(e.touches[0].clientX);
             });
             
+            // Touch move events on the entire container (for when finger moves outside slider)
             container.addEventListener('touchmove', e => {
                 if (isTouching) {
                     e.preventDefault(); // Prevent page scrolling
@@ -2118,10 +2151,16 @@
                 }
             });
             
-            container.addEventListener('touchend', e => {
-                isTouching = false;
-                e.preventDefault(); // Prevent any remaining scroll behavior
-            });
+            // Touch end events on both slider and container
+            const endTouch = (e) => {
+                if (isTouching) {
+                    isTouching = false;
+                    e.preventDefault();
+                }
+            };
+            
+            slider.addEventListener('touchend', endTouch);
+            container.addEventListener('touchend', endTouch);
         });
     
 
