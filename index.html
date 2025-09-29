@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V0.76</title>
+    <title>V0.8</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link
         rel="stylesheet"
@@ -15,7 +15,7 @@
         height: 80vh;
         width: 100%;
         overflow: hidden;
-        margin-top: 0; /* No margin for hero carousel */
+        margin-top: 100px; /* Account for fixed navbar */
         }
 
         .swiper-slide {
@@ -25,22 +25,16 @@
         position: relative;
         }
 
-        .slide-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, rgba(44, 62, 80, 0.7) 0%, rgba(52, 73, 94, 0.7) 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        }
-
         .slide-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         text-align: center;
         color: white;
         z-index: 2;
+        max-width: 800px;
+        padding: 1rem 2rem;
         }
 
         .slide-content h2 {
@@ -116,6 +110,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-padding-top: 0;
+        }
+
         body {
             font-family: 'Open Sans', sans-serif;
             background-color: #395667; /* Solid color instead of gradient */
@@ -135,8 +133,24 @@
         
         /* Page sections - add top margin to account for fixed navbar */
         .page-section {
-            margin-top: 120px; /* Account for navbar height + some extra space */
-            min-height: calc(100vh - 120px);
+            margin-top: 100px; /* Account for navbar height */
+            min-height: calc(100vh - 100px);
+        }
+        
+        /* Home section doesn't need margin since hero carousel handles it */
+        #home {
+            margin-top: 0;
+            min-height: calc(100vh - 100px);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Home content wrapper */
+        .home-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
         }
         
         /* Sticky Navigation */
@@ -161,19 +175,54 @@
             height: 60px; /* Reduce height when scrolled */
         }
 
+        /* Mobile-specific transparent navbar styles */
+        @media (max-width: 768px) {
+            .navbar {
+                background: rgba(255, 255, 255, 0.95); /* Keep fully white at top */
+                backdrop-filter: blur(10px);
+                transition: all 0.4s ease, opacity 0.3s ease;
+            }
+
+            .navbar.scrolled {
+                background: rgba(255, 255, 255, 0.85); /* Less transparent when scrolled */
+                backdrop-filter: blur(20px);
+            }
+
+            /* Additional mobile transparency states - only when scrolling */
+            .navbar.mobile-transparent {
+                background: rgba(255, 255, 255, 0.4) !important;
+                backdrop-filter: blur(8px);
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            }
+
+            .navbar.mobile-semi-transparent {
+                background: rgba(255, 255, 255, 0.6) !important;
+                backdrop-filter: blur(12px);
+                box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            }
+
+            /* Enhanced mobile navbar text visibility */
+            .navbar.mobile-transparent .nav-links a,
+            .navbar.mobile-semi-transparent .nav-links a {
+                text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+                font-weight: 600;
+            }
+        }
+
         .navbar.scrolled .logo img {
             height: 80px; /* Logo stays same size */
             top: 10px; /* Logo position stays exactly the same */
-            left: 50px; /* Logo position stays exactly the same */
+            left: 20px; /* Match the right padding (20px) */
         }
 
         .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+            width: 100%; /* Full width instead of max-width */
+            margin: 0;
             display: flex;
             justify-content: flex-end; /* Push nav links to the right */
             align-items: center;
             height: 100%;
+            padding-right: 20px; /* Small padding from the very edge */
         }
 
         .logo {
@@ -192,7 +241,7 @@
             width: auto;
             position: fixed; /* Fixed position relative to viewport, not navbar */
             top: 10px; /* Fixed distance from top of viewport */
-            left: 50px; /* Fixed distance from left (adjust as needed) */
+            left: 20px; /* Match the right padding (20px) */
             z-index: 1001; /* Higher than navbar */
             transition: none; /* No transition - logo never moves */
         }
@@ -324,9 +373,9 @@
 
         /* Container styling for proper spacing */
         .container {
-            max-width: 1200px;
+            max-width: 1350px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
         }
         
         /* Ensure section headers are properly spaced */
@@ -344,8 +393,6 @@
         /* Page Sections */
         .page-section {
             display: none;
-            margin-top: 100px; /* Account for fixed navbar height */
-            min-height: calc(100vh - 120px);
         }
 
         .page-section.active {
@@ -365,9 +412,11 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: all 0.4s ease;
-            cursor: pointer;
             position: relative;
             border-radius: 15px;
+            width: 100%;
+            margin: 0;
+            padding: 0;
         }
 
 
@@ -400,7 +449,13 @@
             padding: 1.5rem;
             text-align: center;
             background: white;
-            border-radius: 0 0 15px 15px;
+            width: 100%;
+            box-sizing: border-box;
+            cursor: default;
+            margin: 0;
+            position: relative;
+            left: 0;
+            right: 0;
         }
 
         .project-text h3 {
@@ -420,7 +475,8 @@
             background: white;
             padding: 3rem 2rem;
             text-align: center;
-            margin-top: 3rem;
+            margin-top: auto;
+            margin-bottom: 0;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
@@ -464,7 +520,7 @@
             color: white;
             padding: 2rem;
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 0;
         }
 
         .credit-line {
@@ -601,6 +657,13 @@
     cursor: ew-resize;
     background: white; /* White background instead of blue */
     border-radius: 15px 15px 0 0; /* Only top corners rounded */
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    right: 0;
 }
 
     .ba-container img {
@@ -645,29 +708,31 @@
     /* Booking Styles - Mobile First Design */
     .booking-section { 
         background: white; 
-        padding: 1rem; 
-        margin: 1rem 0; 
-        border-radius: 20px; 
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+        padding: 0.8rem; 
+        margin: 0.8rem 0; 
+        border-radius: 16px; 
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1); 
+        transform: scale(0.9);
+        transform-origin: top center;
     }
     
     .booking-header { 
         text-align: center; 
-        margin-bottom: 2rem; 
-        padding: 1rem;
+        margin-bottom: 1.5rem; 
+        padding: 0.8rem;
     }
     
     .booking-header h2 { 
-        font-size: 1.8rem; 
-        margin-bottom: 0.5rem; 
+        font-size: 1.6rem; 
+        margin-bottom: 0.4rem; 
         color: #2c3e50; 
         font-weight: 700;
     }
     
     .booking-header p { 
         color: #666; 
-        font-size: 1rem;
-        line-height: 1.5;
+        font-size: 0.9rem;
+        line-height: 1.4;
     }
     
     .booking-system { 
@@ -682,10 +747,10 @@
     .booking-steps {
         display: flex;
         justify-content: center;
-        margin-bottom: 2rem;
-        padding: 0 1rem;
+        margin-bottom: 1.5rem;
+        padding: 0 0.8rem;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 0.8rem;
     }
     
     .step {
@@ -724,8 +789,8 @@
     }
     
     .step-number {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
         background: #e1e8ed;
         color: #666;
@@ -733,8 +798,8 @@
         align-items: center;
         justify-content: center;
         font-weight: 700;
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
         transition: all 0.3s ease;
     }
     
@@ -750,11 +815,11 @@
     }
     
     .step-label {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         font-weight: 600;
         color: #666;
         text-align: center;
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.2rem;
     }
     
     .step.active .step-label {
@@ -778,29 +843,29 @@
     /* Calendar Container */
     .calendar-container { 
         background: white; 
-        border-radius: 20px; 
-        padding: 1.5rem; 
+        border-radius: 16px; 
+        padding: 1.2rem; 
         border: none; 
-        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        margin-bottom: 1.2rem;
     }
     
     .calendar-header { 
         display: flex; 
         align-items: center; 
         justify-content: space-between; 
-        margin-bottom: 1.5rem; 
-        padding: 0 0.5rem;
+        margin-bottom: 1.2rem; 
+        padding: 0 0.4rem;
     }
     
     .calendar-nav { 
         background: #34495e; 
         color: white; 
         border: none; 
-        padding: 0.8rem 1.2rem; 
-        border-radius: 12px; 
+        padding: 0.6rem 1rem; 
+        border-radius: 10px; 
         cursor: pointer; 
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: 600;
         transition: all 0.3s ease;
     }
@@ -813,43 +878,43 @@
     .calendar-title { 
         font-weight: 700; 
         color: #2c3e50; 
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
     
     .calendar-weekdays { 
         display: grid; 
         grid-template-columns: repeat(7, 1fr); 
-        gap: 0.5rem; 
-        margin-bottom: 0.5rem; 
+        gap: 0.4rem; 
+        margin-bottom: 0.4rem; 
     }
     
     .weekday { 
         text-align: center; 
-        padding: 0.8rem 0.5rem; 
+        padding: 0.6rem 0.4rem; 
         font-weight: 700; 
-        background: #f8f9fa; 
-        border-radius: 12px; 
-        font-size: 0.8rem;
-        color: #2c3e50;
+        background: #34495e; 
+        border-radius: 10px; 
+        font-size: 0.75rem;
+        color: #ffffff;
     }
     
     .calendar-days { 
         display: grid; 
         grid-template-columns: repeat(7, 1fr); 
-        gap: 0.5rem; 
+        gap: 0.4rem; 
     }
     
     .calendar-day { 
-        min-height: 50px; 
+        min-height: 45px; 
         border: 2px solid #e1e8ed; 
-        border-radius: 12px; 
+        border-radius: 10px; 
         display: flex; 
         align-items: center; 
         justify-content: center; 
         cursor: pointer; 
         background: white; 
         font-weight: 600; 
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         transition: all 0.3s ease;
         position: relative;
     }
@@ -883,44 +948,45 @@
     
     .calendar-day.fully-booked { 
         background: #ffebee !important; 
-        border-color: #e74c3c !important; 
+        border-color: #e73c3c !important; 
         color: #c62828 !important; 
         cursor: not-allowed !important; 
         opacity: 0.7 !important; 
     }
     
     .calendar-day.past { 
-        background: #f5f5f5 !important; 
+        background: #34495e !important; 
         color: #999 !important; 
         cursor: not-allowed !important; 
-        opacity: 0.6 !important; 
+        opacity: 0.5 !important; 
+        border-color: #999 !important; 
     }
     
     /* Time Slots */
     .time-slots-container {
         background: white;
-        border-radius: 20px;
-        padding: 1.5rem;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        margin-bottom: 1.5rem;
+        border-radius: 16px;
+        padding: 1.2rem;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        margin-bottom: 1.2rem;
     }
     
     .time-slots { 
         display: grid; 
         grid-template-columns: repeat(2, 1fr); 
-        gap: 0.8rem; 
-        margin-top: 0.5rem; 
+        gap: 0.6rem; 
+        margin-top: 0.4rem; 
     }
     
     .time-slot { 
-        padding: 1rem; 
+        padding: 0.8rem; 
         border: 2px solid #e1e8ed; 
-        border-radius: 12px; 
+        border-radius: 10px; 
         text-align: center; 
         cursor: pointer; 
         background: white; 
         font-weight: 600; 
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         transition: all 0.3s ease;
     }
     
@@ -947,23 +1013,23 @@
     /* Service Selection */
     .service-selection {
         background: white;
-        border-radius: 20px;
-        padding: 1.5rem;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        margin-bottom: 1.5rem;
+        border-radius: 16px;
+        padding: 1.2rem;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        margin-bottom: 1.2rem;
     }
     
     .service-options {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 1rem;
-        margin-top: 1rem;
+        gap: 0.8rem;
+        margin-top: 0.8rem;
     }
     
     .service-option {
         border: 2px solid #e1e8ed;
-        border-radius: 15px;
-        padding: 1.2rem;
+        border-radius: 12px;
+        padding: 1rem;
         cursor: pointer;
         transition: all 0.3s ease;
         background: white;
@@ -971,8 +1037,8 @@
     }
     
     .service-option:hover {
-        transform: scale(1.05);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transform: scale(1.01);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.15);
     }
     
     .service-option.selected {
@@ -992,50 +1058,50 @@
     .service-name {
         font-weight: 700;
         color: #2c3e50;
-        font-size: 1rem;
-        margin-bottom: 0.3rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.2rem;
     }
     
     .service-price {
         color: #27ae60;
         font-weight: 600;
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     
     .service-description {
         color: #666;
-        font-size: 0.85rem;
-        margin-top: 0.5rem;
-        line-height: 1.4;
+        font-size: 0.8rem;
+        margin-top: 0.4rem;
+        line-height: 1.3;
     }
     
     /* Form Styling */
     .form-section {
         background: white;
-        border-radius: 20px;
-        padding: 1.5rem;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        margin-bottom: 1.5rem;
+        border-radius: 16px;
+        padding: 1.2rem;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        margin-bottom: 1.2rem;
     }
     
     .form-group { 
-        margin-bottom: 1.2rem; 
+        margin-bottom: 1rem; 
     }
     
     .form-group label { 
         display: block; 
-        margin-bottom: 0.5rem; 
+        margin-bottom: 0.4rem; 
         font-weight: 600; 
         color: #2c3e50; 
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
     
     .form-group input, .form-group select, .form-group textarea { 
         width: 100%; 
-        padding: 1rem; 
+        padding: 0.8rem; 
         border: 2px solid #e1e8ed; 
-        border-radius: 12px; 
-        font-size: 1rem; 
+        border-radius: 10px; 
+        font-size: 0.9rem; 
         transition: all 0.3s ease;
     }
     
@@ -1047,16 +1113,16 @@
     
     .book-btn { 
         width: 100%; 
-        padding: 1.2rem; 
+        padding: 1rem; 
         background: linear-gradient(45deg, #2c3e50, #34495e); 
         color: white; 
         border: none; 
-        border-radius: 12px; 
-        font-size: 1.1rem; 
+        border-radius: 10px; 
+        font-size: 1rem; 
         font-weight: 600; 
         cursor: pointer; 
         transition: all 0.3s ease;
-        margin-top: 1rem;
+        margin-top: 0.8rem;
     }
     
     .book-btn:hover {
@@ -1117,6 +1183,111 @@
         background: #bdc3c7;
         cursor: not-allowed;
         transform: none;
+    }
+    
+    /* Summary Section Styles */
+    .summary-section {
+        background: white;
+        border-radius: 16px;
+        padding: 1.2rem;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        margin-bottom: 1.2rem;
+    }
+    
+    .summary-container {
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 1.2rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .summary-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid #e9ecef;
+    }
+    
+    .summary-item:last-of-type {
+        border-bottom: none;
+    }
+    
+    .summary-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem 0;
+        margin-top: 0.8rem;
+        border-top: 2px solid #34495e;
+        font-weight: 700;
+        font-size: 1rem;
+    }
+    
+    .summary-label {
+        font-weight: 600;
+        color: #2c3e50;
+        font-size: 0.9rem;
+    }
+    
+    .summary-value {
+        color: #34495e;
+        font-weight: 500;
+        text-align: right;
+        max-width: 60%;
+        word-wrap: break-word;
+        font-size: 0.9rem;
+    }
+    
+    .summary-total .summary-label,
+    .summary-total .summary-value {
+        color: #2c3e50;
+        font-size: 1rem;
+    }
+    
+    .summary-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.8rem;
+        margin-top: 0.8rem;
+    }
+    
+    .summary-actions .nav-btn {
+        flex: 1;
+        background: #95a5a6;
+        color: white;
+        border: none;
+        padding: 0.8rem 1.2rem;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .summary-actions .nav-btn:hover {
+        background: #7f8c8d;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(149,165,166,0.3);
+    }
+    
+    .summary-actions .book-btn {
+        flex: 2;
+        background: linear-gradient(45deg, #27ae60, #2ecc71);
+        color: white;
+        border: none;
+        padding: 0.8rem 1.2rem;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .summary-actions .book-btn:hover {
+        background: linear-gradient(45deg, #2ecc71, #27ae60);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(39,174,96,0.3);
     }
 
 
@@ -1180,6 +1351,7 @@
         padding: 1rem 2rem;
         box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         gap: 1rem;
+        margin-right: 0; /* Remove margin on mobile */
     }
 
     .nav-links.active {
@@ -1204,10 +1376,17 @@
     }
 
     /* Mobile Calendar Fixes */
+    .booking-section {
+        transform: scale(0.85) !important; /* Even smaller on mobile */
+        transform-origin: top center !important;
+        margin: 0.5rem 0 !important;
+        padding: 0.6rem !important;
+    }
+
     .booking-system {
         max-width: 100% !important; /* Full width on mobile */
         margin: 0 !important;
-        padding: 0.5rem !important; /* Reduced padding */
+        padding: 0.4rem !important; /* Reduced padding */
         background: transparent !important; /* Remove white background */
     }
 
@@ -1215,24 +1394,24 @@
         width: 100% !important;
         max-width: 100% !important;
         background: white !important; /* White background for calendar only */
-        border-radius: 20px !important;
-        padding: 1.5rem !important; /* More padding for calendar */
-        margin-bottom: 1.5rem !important;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.08) !important;
+        border-radius: 16px !important;
+        padding: 1rem !important; /* More padding for calendar */
+        margin-bottom: 1rem !important;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
         overflow: hidden !important; /* Prevent overflow */
     }
 
     .calendar-days {
         grid-template-columns: repeat(7, 1fr) !important;
-        gap: 0.5rem !important; /* Reduced gap to fit better */
+        gap: 0.3rem !important; /* Even smaller gap for mobile */
         min-width: 100% !important;
         max-width: 100% !important;
     }
 
     .calendar-day {
-        min-height: 45px !important; /* Slightly smaller for mobile */
-        font-size: 0.85rem !important; /* Smaller font */
-        border-radius: 10px !important;
+        min-height: 40px !important; /* Smaller for mobile */
+        font-size: 0.8rem !important; /* Smaller font */
+        border-radius: 8px !important;
         border: 2px solid #e1e8ed !important;
         display: flex !important;
         align-items: center !important;
@@ -1275,43 +1454,44 @@
 
     .calendar-day.fully-booked { 
         background: #ffebee !important; 
-        border-color: #e74c3c !important; 
+        border-color: #e73c3c !important; 
         color: #c62828 !important; 
         cursor: not-allowed !important; 
         opacity: 0.7 !important; 
     }
 
     .calendar-day.past { 
-        background: #f5f5f5 !important; 
+        background: #34495e !important; 
         color: #999 !important; 
         cursor: not-allowed !important; 
-        opacity: 0.6 !important; 
+        opacity: 0.5 !important; 
+        border-color: #999 !important; 
     }
 
     .weekday {
         text-align: center !important;
-        padding: 0.6rem 0.3rem !important; /* Reduced padding */
+        padding: 0.5rem 0.2rem !important; /* Reduced padding */
         font-weight: 700 !important;
-        background: #f8f9fa !important;
-        border-radius: 10px !important;
-        font-size: 0.75rem !important; /* Smaller font */
-        color: #2c3e50 !important;
+        background: #34495e !important;
+        border-radius: 8px !important;
+        font-size: 0.7rem !important; /* Smaller font */
+        color: #ffffff !important;
     }
 
     .time-slots {
         grid-template-columns: repeat(2, 1fr) !important; /* 2 columns on mobile */
-        gap: 0.8rem !important; /* More space between time slots */
+        gap: 0.6rem !important; /* More space between time slots */
     }
 
     .time-slot {
-        padding: 1rem !important;
+        padding: 0.8rem !important;
         border: 2px solid #e1e8ed !important;
-        border-radius: 12px !important;
+        border-radius: 10px !important;
         text-align: center !important;
         cursor: pointer !important;
         background: #fff !important;
         font-weight: 600 !important;
-        font-size: 0.9rem !important;
+        font-size: 0.85rem !important;
         transition: all 0.3s ease !important;
     }
 
@@ -1337,16 +1517,16 @@
 
     /* Form styling for mobile */
     .form-group input, .form-group select, .form-group textarea {
-        padding: 1rem !important;
-        font-size: 1rem !important;
-        border-radius: 12px !important;
+        padding: 0.8rem !important;
+        font-size: 0.9rem !important;
+        border-radius: 10px !important;
     }
 
     .book-btn {
-        padding: 1.2rem !important;
-        font-size: 1.1rem !important;
-        border-radius: 12px !important;
-        margin-top: 1.5rem !important;
+        padding: 1rem !important;
+        font-size: 1rem !important;
+        border-radius: 10px !important;
+        margin-top: 1rem !important;
     }
     
     /* Navigation Buttons for Mobile */
@@ -1374,6 +1554,40 @@
         transform: none !important;
         box-shadow: none !important;
     }
+    
+    /* Mobile Summary Styles */
+    .summary-container {
+        padding: 0.8rem !important;
+    }
+    
+    .summary-item {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 0.5rem 0 !important;
+    }
+    
+    .summary-label {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.2rem !important;
+    }
+    
+    .summary-value {
+        text-align: left !important;
+        max-width: 100% !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .summary-actions {
+        flex-direction: column !important;
+        gap: 0.6rem !important;
+    }
+    
+    .summary-actions .nav-btn,
+    .summary-actions .book-btn {
+        width: 100% !important;
+        padding: 0.8rem !important;
+        font-size: 0.9rem !important;
+    }
 }
     </style>
 </head>
@@ -1395,12 +1609,12 @@
             <span></span>
         </div>
     </div>
-    </nav>
+</nav>
 
-    <!-- Logo positioned independently -->
-    <a href="#" class="logo" onclick="showSection('home', event)" style="position: fixed; top: 10px; left: 50px; z-index: 1001;">
-        <img src="logo.png" alt="Logo" style="height: 80px; width: auto;">
-    </a>
+<!-- Logo positioned independently -->
+<a href="#" class="logo" onclick="showSection('home', event)" style="position: fixed; top: 10px; left: 20px; z-index: 1001;">
+    <img src="logo.png" alt="Logo" style="height: 80px; width: auto;">
+</a>
 
     <!-- Main Content Wrapper -->
     <div class="main-content">
@@ -1409,28 +1623,22 @@
     <!-- Desktop Carousel -->
     <div class="hero-carousel hero-carousel-desktop swiper" id="desktop-swiper">
     <div class="swiper-wrapper">
-        <div class="swiper-slide" style="background-image: url('before.jpg');">
-            <div class="slide-overlay">
-                <div class="slide-content">
-                    <h2>Professional Car Detailing</h2>
-                    <p>Transform your vehicle with our expert services</p>
-                </div>
+        <div class="swiper-slide" style="background-image: url('Carousel_PC1.png');">
+            <div class="slide-content">
+                <!-- <h2>Professional Car Detailing</h2> -->
+                <!-- <p>Transform your vehicle with our expert services</p> -->
             </div>
         </div>
-        <div class="swiper-slide" style="background-image: url('after.jpg');">
-            <div class="slide-overlay">
-                <div class="slide-content">
-                    <h2>Before & After Results</h2>
-                    <p>See the difference our detailing makes</p>
-                </div>
+        <div class="swiper-slide" style="background-image: url('Carousel_PC2.png');">
+            <div class="slide-content">
+                <!-- <h2>Dry Ice Blasting Services</h2> -->
+                <!-- <p>Advanced cleaning technology for superior results</p> -->
             </div>
         </div>
-        <div class="swiper-slide" style="background-image: url('logo.png');">
-            <div class="slide-overlay">
-                <div class="slide-content">
-                    <h2>Bariq Al-Ma'dan</h2>
-                    <p>Premium automotive care services</p>
-                </div>
+        <div class="swiper-slide" style="background-image: url('Carousel_PC3.png');">
+            <div class="slide-content">
+                <!-- <h2>Bariq Al-Ma'dan</h2> -->
+                <!-- <p>Premium automotive care services</p> -->
             </div>
         </div>
     </div>
@@ -1440,22 +1648,22 @@
     <!-- Mobile Carousel -->
     <div class="hero-carousel hero-carousel-mobile swiper" id="mobile-swiper">
     <div class="swiper-wrapper">
-        <div class="swiper-slide" style="background-image: url('before.jpg');">
+        <div class="swiper-slide" style="background-image: url('Carousel_Mobile1.png');">
             <div class="slide-content">
-                <h2>Professional Car Detailing</h2>
-                <p>Transform your vehicle with our expert services</p>
+                <!-- <h2>Before & After Results</h2> -->
+                <!-- <p>See the difference our detailing makes</p> -->
             </div>
         </div>
-        <div class="swiper-slide" style="background-image: url('after.jpg');">
+        <div class="swiper-slide" style="background-image: url('Carousel_Mobile2.png');">
             <div class="slide-content">
-                <h2>Before & After Results</h2>
-                <p>See the difference our detailing makes</p>
+                <!-- <h2>Dry Ice Blasting Services</h2> -->
+                <!-- <p>Advanced cleaning technology for superior results</p> -->
             </div>
         </div>
-        <div class="swiper-slide" style="background-image: url('logo.png');">
+        <div class="swiper-slide" style="background-image: url('Carousel_Mobile3.png');">
             <div class="slide-content">
-                <h2>Bariq Al-Ma'dan</h2>
-                <p>Premium automotive care services</p>
+                <!-- <h2>Bariq Al-Ma'dan</h2> -->
+                <!-- <p>Premium automotive care services</p> -->
             </div>
         </div>
     </div>
@@ -1464,18 +1672,21 @@
 
     <div class="carousel-dots" id="carousel-dots"></div>
 
-    <!-- Cover Photo Section -->
-    <div class="cover-section fade-in">
-        <div class="cover-overlay"></div>
-        <div class="cover-content">
-            <h1>V0.76</h1>
-            <p>Explore our previous projects</p>
+    <!-- Home Content Wrapper -->
+    <div class="home-content">
+        <!-- Cover Photo Section -->
+        <div class="cover-section">
+            <div class="cover-overlay"></div>
+            <div class="cover-content">
+                <h1>V0.8</h1>
+                <p>Explore our previous projects</p>
+            </div>
         </div>
-    </div>
 
-    <div class="container fade-in-delayed">
-        <div class="projects-grid fade-in-slow" id="projects-container">
-            <!-- Projects will be loaded dynamically -->
+        <div class="container fade-in-delayed" style="margin-top: 3rem; width: 100%;">
+            <div class="projects-grid fade-in-slow" id="projects-container">
+                <!-- Projects will be loaded dynamically -->
+            </div>
         </div>
     </div>
 
@@ -1493,34 +1704,40 @@
 <!-- Services / Booking Section -->
 <div id="services" class="page-section">
     <div class="container">
+        <div class="fade-in">
+            <h2 style="text-align: center; color: white; margin-bottom: 2rem; font-size: 2.5rem; margin-top: 0; padding-top: 20px;">Book Your Service</h2>
+        </div>
         <div class="booking-section fade-in">
-            <div class="booking-header">
-                <h2>Book Your Service</h2>
+            <div class="booking-header fade-in-slow">
                 <p>Max 2 appointments per day. Each session 2–4 hours. Available 9:00–17:00.</p>
             </div>
-
             <div class="booking-system" id="bookingSystem">
                 <!-- Step Indicator -->
-                <div class="booking-steps">
-                    <div class="step active" id="step1" onclick="bookingSystem.goToStep(1)">
+                <div class="booking-steps fade-in-slow">
+                    <div class="step active fade-in" id="step1" onclick="bookingSystem.goToStep(1)">
                         <div class="step-number">1</div>
                         <div class="step-label">Date</div>
                         <div class="step-selection" id="dateSelection"></div>
                     </div>
-                    <div class="step" id="step2" onclick="bookingSystem.goToStep(2)">
+                    <div class="step fade-in-delayed" id="step2" onclick="bookingSystem.goToStep(2)">
                         <div class="step-number">2</div>
                         <div class="step-label">Time</div>
                         <div class="step-selection" id="timeSelection"></div>
                     </div>
-                    <div class="step" id="step3" onclick="bookingSystem.goToStep(3)">
+                    <div class="step fade-in-delayed" id="step3" onclick="bookingSystem.goToStep(3)">
                         <div class="step-number">3</div>
                         <div class="step-label">Service</div>
                         <div class="step-selection" id="serviceSelection"></div>
                     </div>
-                    <div class="step" id="step4" onclick="bookingSystem.goToStep(4)">
+                    <div class="step fade-in-delayed" id="step4" onclick="bookingSystem.goToStep(4)">
                         <div class="step-number">4</div>
                         <div class="step-label">Details</div>
                         <div class="step-selection" id="detailsSelection"></div>
+                    </div>
+                    <div class="step fade-in-delayed" id="step5" onclick="bookingSystem.goToStep(5)">
+                        <div class="step-number">5</div>
+                        <div class="step-label">Confirm</div>
+                        <div class="step-selection" id="confirmSelection"></div>
                     </div>
                 </div>
 
@@ -1535,7 +1752,7 @@
                 </div>
 
                 <!-- Step 1: Date Selection -->
-                <div class="calendar-container" id="dateStep">
+                <div class="calendar-container fade-in-slow" id="dateStep">
                     <h3 style="margin-bottom: 1rem; color: #2c3e50; font-size: 1.2rem;">Choose Your Date</h3>
                     <div class="calendar-header">
                         <button type="button" class="calendar-nav" id="prevMonth">‹</button>
@@ -1618,8 +1835,52 @@
                             <textarea id="notes" name="notes" rows="3" placeholder="Any special requests or notes..."></textarea>
                         </div>
 
-                        <button type="submit" class="book-btn" id="submitBtn">Book Appointment</button>
+                        <button type="button" class="book-btn" id="reviewBtn" onclick="bookingSystem.nextStep()">Review Booking</button>
                     </form>
+                </div>
+
+                <!-- Step 5: Booking Summary -->
+                <div class="summary-section" id="summaryStep" style="display: none;">
+                    <h3 style="margin-bottom: 1rem; color: #2c3e50; font-size: 1.2rem;">Booking Summary</h3>
+                    <div class="summary-container">
+                        <div class="summary-item">
+                            <div class="summary-label">Date & Time:</div>
+                            <div class="summary-value" id="summaryDateTime"></div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Service:</div>
+                            <div class="summary-value" id="summaryService"></div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Customer:</div>
+                            <div class="summary-value" id="summaryCustomer"></div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Contact:</div>
+                            <div class="summary-value" id="summaryContact"></div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Vehicle:</div>
+                            <div class="summary-value" id="summaryVehicle"></div>
+                        </div>
+                        <div class="summary-item" id="summaryNotesItem" style="display: none;">
+                            <div class="summary-label">Notes:</div>
+                            <div class="summary-value" id="summaryNotes"></div>
+                        </div>
+                        <div class="summary-total">
+                            <div class="summary-label">Total:</div>
+                            <div class="summary-value" id="summaryTotal"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-actions">
+                        <button type="button" class="nav-btn" onclick="bookingSystem.prevStep()" style="background: #95a5a6;">
+                            ← Edit Details
+                        </button>
+                        <button type="button" class="book-btn" id="confirmBookingBtn" onclick="bookingSystem.confirmBooking()">
+                            Confirm Booking
+                        </button>
+                    </div>
                 </div>
 
                 <div class="success-message" id="successMessage">
@@ -1640,7 +1901,7 @@
 <div id="about" class="page-section">
     <div class="container">
         <div class="fade-in">
-            <h2 style="text-align: center; color: white; margin-bottom: 2rem; font-size: 2.5rem;">About Us</h2>
+            <h2 style="text-align: center; color: white; margin-bottom: 2rem; font-size: 2.5rem; margin-top: 0; padding-top: 20px;">About Us</h2>
             <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                 <h3 style="color: #333; margin-bottom: 1rem;">Bariq Al-Ma'dan</h3>
                 <p style="color: #666; line-height: 1.8; margin-bottom: 1rem;">
@@ -1659,7 +1920,7 @@
 <div id="contact" class="page-section">
     <div class="container">
         <div class="fade-in">
-            <h2 style="text-align: center; color: white; margin-bottom: 2rem; font-size: 2.5rem;">Contact Us</h2>
+            <h2 style="text-align: center; color: white; margin-bottom: 2rem; font-size: 2.5rem; margin-top: 0; padding-top: 20px;">Contact Us</h2>
             <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                 <h3 style="color: #333; margin-bottom: 1rem;">Get In Touch</h3>
                 <p style="color: #666; line-height: 1.8; margin-bottom: 1rem;">
@@ -1682,8 +1943,7 @@
         <!-- Credit line with only Icons8 underlined, not blue -->
         <div class="credit-line">
             <span>
-                Designed by xxxx. Icons by 
-                <a href="https://icons8.com/" target="_blank" style="color: inherit; text-decoration: underline;">Icons8</a>
+                © 2024 Dry Ice Cleaning. All rights reserved.
             </span>
         </div>
     </div>
@@ -1706,25 +1966,25 @@
 
                 
                 id: 1,
-                title: "Image Test",
-                description: "Testing before/after",
+                title: "Before & After",
+                description: "Car detailing transformation",
                 image: "before.jpg",
                 detailImages: ["before.jpg", "after.jpg"],
-                overview: "Test overview",
-                features: ["5"],
-                technologies: ""
+                overview: "Professional car detailing before and after results",
+                features: ["Paint restoration", "Interior detailing", "Exterior wash"],
+                technologies: "Advanced cleaning techniques"
                 
                 },
                 {
 
-                id: 1,
-                title: "Image Test",
-                description: "Testing before/after",
+                id: 2,
+                title: "Before & After",
+                description: "Car detailing transformation",
                 image: "before.jpg",
                 detailImages: ["before.jpg", "after.jpg"],
-                overview: "Test overview",
-                features: ["5"],
-                technologies: ""
+                overview: "Professional car detailing before and after results",
+                features: ["Paint restoration", "Interior detailing", "Exterior wash"],
+                technologies: "Advanced cleaning techniques"
 
                 }
             ],
@@ -1739,15 +1999,44 @@
             mobileMenu.classList.toggle('active');
         }
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
+        // Navbar scroll effect with mobile transparency
+        function updateNavbarTransparency() {
             const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
+            const scrollY = window.scrollY;
+            const isMobile = window.innerWidth <= 768;
+            
+            // Basic scrolled state
+            if (scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
-        });
+            
+            // Mobile-specific transparency effects - only when scrolling down
+            if (isMobile) {
+                // Remove all mobile transparency classes first
+                navbar.classList.remove('mobile-transparent', 'mobile-semi-transparent');
+                
+                // Only apply transparency when scrolling down (not at the top)
+                if (scrollY > 20 && scrollY <= 100) {
+                    // Slight scroll - semi-transparent
+                    navbar.classList.add('mobile-semi-transparent');
+                } else if (scrollY > 100) {
+                    // Further scroll - more transparent
+                    navbar.classList.add('mobile-transparent');
+                }
+                // When at the top (scrollY <= 20), it stays fully white (no transparency classes)
+            } else {
+                // Remove mobile classes when not on mobile
+                navbar.classList.remove('mobile-transparent', 'mobile-semi-transparent');
+            }
+        }
+
+        // Listen for scroll events
+        window.addEventListener('scroll', updateNavbarTransparency);
+        
+        // Listen for resize events (device rotation, window resize)
+        window.addEventListener('resize', updateNavbarTransparency);
 
 
 
@@ -1771,7 +2060,6 @@
                 </div>
                 <div class="project-text">
                     <h3>${project.title}</h3>
-                    <p>xxxccc</p>
                 </div>
             `;
 
@@ -1814,9 +2102,26 @@
                 startDrag();
             });
 
-            // Touch support
-            container.addEventListener('touchstart', e => moveSlider(e.touches[0].clientX));
-            container.addEventListener('touchmove', e => moveSlider(e.touches[0].clientX));
+            // Touch support with scroll prevention
+            let isTouching = false;
+            
+            container.addEventListener('touchstart', e => {
+                isTouching = true;
+                e.preventDefault(); // Prevent page scrolling
+                moveSlider(e.touches[0].clientX);
+            });
+            
+            container.addEventListener('touchmove', e => {
+                if (isTouching) {
+                    e.preventDefault(); // Prevent page scrolling
+                    moveSlider(e.touches[0].clientX);
+                }
+            });
+            
+            container.addEventListener('touchend', e => {
+                isTouching = false;
+                e.preventDefault(); // Prevent any remaining scroll behavior
+            });
         });
     
 
@@ -1854,6 +2159,20 @@
             if (target) {
                 target.style.display = 'block';
                 target.classList.add('active');
+                
+        // Trigger fade-in animations for booking section
+        if (id === 'services') {
+            setTimeout(() => {
+                // Reset animation classes to trigger them again
+                const bookingElements = target.querySelectorAll('.fade-in, .fade-in-delayed, .fade-in-slow');
+                bookingElements.forEach(el => {
+                    el.style.animation = 'none';
+                    el.offsetHeight; // Trigger reflow
+                    el.style.animation = null;
+                });
+            }, 50);
+        }
+                
                 console.log('Section displayed:', id); // Debug log
             } else {
                 console.error('Section not found:', id); // Debug log
@@ -1863,11 +2182,20 @@
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             const link = document.querySelector(`.nav-links a[onclick*="${id}"]`);
             if (link) link.classList.add('active');
+            
+            // Scroll to top of the page smoothly
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
 
         // Initialize the website
         document.addEventListener('DOMContentLoaded', function() {
             loadProjects();
+            
+            // Initialize navbar transparency on page load
+            updateNavbarTransparency();
 
             // Handle browser back/forward buttons
             window.addEventListener('popstate', function(event) {
@@ -1881,12 +2209,31 @@
                     if (target) {
                         target.style.display = 'block';
                         target.classList.add('active');
+                        
+                        // Trigger fade-in animations for booking section
+                        if (event.state.section === 'services') {
+                            setTimeout(() => {
+                                // Reset animation classes to trigger them again
+                                const bookingElements = target.querySelectorAll('.fade-in, .fade-in-delayed, .fade-in-slow');
+                                bookingElements.forEach(el => {
+                                    el.style.animation = 'none';
+                                    el.offsetHeight; // Trigger reflow
+                                    el.style.animation = null;
+                                });
+                            }, 50);
+                        }
                     }
                     
                     // Update navigation
                     document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
                     const link = document.querySelector(`.nav-links a[onclick*="${event.state.section}"]`);
                     if (link) link.classList.add('active');
+                    
+                    // Scroll to top when navigating via browser buttons
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 } else {
                     // Default to home if no state
                     showSection('home');
@@ -1919,6 +2266,12 @@
                     homeSection.style.display = 'block';
                     homeSection.classList.add('active');
                 }
+                
+                // Scroll to top on initial page load
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             }
 
 
@@ -1941,6 +2294,7 @@
                 new CarPolishBookingSystem();
             }
         });
+
 
 
 
@@ -1995,11 +2349,9 @@
         }
 
         setupEventListeners() {
-            const bookingForm = document.getElementById('bookingForm');
             const prevMonth = document.getElementById('prevMonth');
             const nextMonth = document.getElementById('nextMonth');
             
-            if (bookingForm) bookingForm.addEventListener('submit', (e) => this.handleBookingSubmission(e));
             if (prevMonth) prevMonth.addEventListener('click', () => this.navigateMonth(-1));
             if (nextMonth) nextMonth.addEventListener('click', () => this.navigateMonth(1));
             
@@ -2034,12 +2386,13 @@
                 case 2: return this.selectedDate !== null;
                 case 3: return this.selectedDate !== null && this.selectedTimeSlot !== null;
                 case 4: return this.selectedDate !== null && this.selectedTimeSlot !== null && this.selectedService !== null;
+                case 5: return this.selectedDate !== null && this.selectedTimeSlot !== null && this.selectedService !== null && this.isFormComplete();
                 default: return false;
             }
         }
         
         goToStep(stepNumber) {
-            if (stepNumber >= 1 && stepNumber <= 4 && this.canAccessStep(stepNumber)) {
+            if (stepNumber >= 1 && stepNumber <= 5 && this.canAccessStep(stepNumber)) {
                 this.currentStep = stepNumber;
                 this.showCurrentStep();
                 this.updateStepIndicator();
@@ -2047,7 +2400,7 @@
         }
 
         nextStep() {
-            if (this.currentStep < 4) {
+            if (this.currentStep < 5) {
                 this.currentStep++;
                 this.showCurrentStep();
                 this.updateStepIndicator();
@@ -2068,6 +2421,7 @@
             document.getElementById('timeStep').style.display = 'none';
             document.getElementById('serviceStep').style.display = 'none';
             document.getElementById('detailsStep').style.display = 'none';
+            document.getElementById('summaryStep').style.display = 'none';
 
             // Show current step
             switch(this.currentStep) {
@@ -2087,6 +2441,10 @@
                 case 4:
                     document.getElementById('detailsStep').style.display = 'block';
                     this.highlightPreviousSelections();
+                    break;
+                case 5:
+                    document.getElementById('summaryStep').style.display = 'block';
+                    this.populateSummary();
                     break;
             }
         }
@@ -2310,42 +2668,6 @@
             statusElement.style.color = remaining > 0 ? '#27ae60' : '#e74c3c';
         }
 
-        handleBookingSubmission(e) {
-            e.preventDefault();
-            const name = document.getElementById('customerName').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const carDetails = document.getElementById('carDetails').value.trim();
-            
-            if (!name || !phone || !email || !carDetails || !this.selectedDate || !this.selectedTimeSlot || !this.selectedService) { 
-                this.showErrorMessage('Please fill in all required fields and complete all steps.'); 
-                return; 
-            }
-            
-            const dayBookings = this.getBookingsForDate(this.selectedDate);
-            if (dayBookings.length >= this.maxAppointmentsPerDay) { 
-                this.showErrorMessage('Sorry, this date is now fully booked. Please select another date.'); 
-                this.renderCalendar(); 
-                this.updateTimeSlots(); 
-                return; 
-            }
-            
-            const bookedSlots = dayBookings.map(booking => booking.time);
-            if (bookedSlots.includes(this.selectedTimeSlot)) { 
-                this.showErrorMessage('Sorry, this time slot is no longer available. Please select another slot.'); 
-                this.updateTimeSlots(); 
-                return; 
-            }
-            
-            const bookingData = this.collectBookingData();
-            if (this.saveBooking(bookingData)) { 
-                this.showSuccessMessage(); 
-                this.sendConfirmation(bookingData); 
-                this.resetForm(); 
-            } else { 
-                this.showErrorMessage(); 
-            }
-        }
 
         collectBookingData() {
             return { 
@@ -2420,8 +2742,102 @@
                 case 1: return this.selectedDate !== null;
                 case 2: return this.selectedTimeSlot !== null;
                 case 3: return this.selectedService !== null;
-                case 4: return false; // No next step on final step
+                case 4: return this.isFormComplete();
+                case 5: return false; // No next step on final step
                 default: return false;
+            }
+        }
+        
+        isFormComplete() {
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const carDetails = document.getElementById('carDetails').value.trim();
+            
+            return name && phone && email && carDetails;
+        }
+        
+        populateSummary() {
+            // Date & Time
+            const date = new Date(this.selectedDate);
+            const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+            const formattedTime = this.formatTime(this.selectedTimeSlot);
+            document.getElementById('summaryDateTime').textContent = `${formattedDate} at ${formattedTime}`;
+            
+            // Service
+            const serviceNames = {
+                'basic': 'Basic Wash',
+                'standard': 'Standard Polish',
+                'premium': 'Premium Detail',
+                'ultimate': 'Ultimate Package'
+            };
+            const servicePrices = {
+                'basic': '$25',
+                'standard': '$75',
+                'premium': '$150',
+                'ultimate': '$300'
+            };
+            document.getElementById('summaryService').textContent = `${serviceNames[this.selectedService]} - ${servicePrices[this.selectedService]}`;
+            
+            // Customer
+            const name = document.getElementById('customerName').value.trim();
+            document.getElementById('summaryCustomer').textContent = name;
+            
+            // Contact
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            document.getElementById('summaryContact').textContent = `${phone} | ${email}`;
+            
+            // Vehicle
+            const carDetails = document.getElementById('carDetails').value.trim();
+            document.getElementById('summaryVehicle').textContent = carDetails;
+            
+            // Notes (if any)
+            const notes = document.getElementById('notes').value.trim();
+            if (notes) {
+                document.getElementById('summaryNotes').textContent = notes;
+                document.getElementById('summaryNotesItem').style.display = 'flex';
+            } else {
+                document.getElementById('summaryNotesItem').style.display = 'none';
+            }
+            
+            // Total
+            document.getElementById('summaryTotal').textContent = servicePrices[this.selectedService];
+            
+            // Update confirm selection display
+            document.getElementById('confirmSelection').textContent = 'Ready';
+        }
+        
+        confirmBooking() {
+            // Validate all data before confirming
+            if (!this.isFormComplete()) {
+                this.showErrorMessage('Please complete all required fields before confirming.');
+                this.goToStep(4);
+                return;
+            }
+            
+            const dayBookings = this.getBookingsForDate(this.selectedDate);
+            if (dayBookings.length >= this.maxAppointmentsPerDay) { 
+                this.showErrorMessage('Sorry, this date is now fully booked. Please select another date.'); 
+                this.goToStep(1);
+                return; 
+            }
+            
+            const bookedSlots = dayBookings.map(booking => booking.time);
+            if (bookedSlots.includes(this.selectedTimeSlot)) { 
+                this.showErrorMessage('Sorry, this time slot is no longer available. Please select another slot.'); 
+                this.goToStep(2);
+                return; 
+            }
+            
+            // Collect and save booking data
+            const bookingData = this.collectBookingData();
+            if (this.saveBooking(bookingData)) { 
+                this.showSuccessMessage(); 
+                this.sendConfirmation(bookingData); 
+                this.resetForm(); 
+            } else { 
+                this.showErrorMessage('Failed to save booking. Please try again.'); 
             }
         }
     }
