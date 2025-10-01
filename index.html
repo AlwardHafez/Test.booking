@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V0.8</title>
+    <title>V0.95</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link
         rel="stylesheet"
@@ -151,6 +151,25 @@
             display: flex;
             flex-direction: column;
             width: 100%;
+            background: linear-gradient(135deg, #395667 0%, #2c3e50 100%);
+            padding: 4rem 0;
+        }
+
+        .home-content .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .home-content .section-header p {
+            font-size: 1.2rem;
+            color: #e8f4f8;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 500;
+            text-align: center;
         }
         
         /* Sticky Navigation */
@@ -333,6 +352,466 @@
             }
         }
 
+        /* Why Choose Dry Ice Section */
+        .why-choose-section {
+            background: linear-gradient(135deg, #395667 0%, #2c3e50 100%);
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #e8f4f8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reason-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .reason-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .reason-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .reason-card p {
+            color: #e8f4f8;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Cleaning Process Section */
+        .process-section {
+            background: white;
+            padding: 4rem 0;
+            color: #333;
+        }
+
+        .process-section .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .process-section .section-header p {
+            font-size: 1.2rem;
+            color: #34495e;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+
+        .process-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-container {
+            position: relative;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 16px;
+            padding: 1rem;
+            text-align: center;
+            border: 2px dashed #dee2e6;
+            transition: all 0.3s ease;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-container:hover {
+            border-color: #2c3e50;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.1);
+        }
+
+        .video-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .video-content img:hover {
+            transform: scale(1.02);
+        }
+
+        .video-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            color: #2c3e50;
+        }
+
+        .video-placeholder h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .video-placeholder p {
+            color: #34495e;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .process-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-step {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem 0;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-step:nth-child(even) .step-content {
+            border-left: none;
+            border-right: 4px solid #2c3e50;
+        }
+
+
+        .step-number {
+            background: #bdc3c7;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 8px 25px rgba(189, 195, 199, 0.4);
+            z-index: 3;
+            position: relative;
+            border: 3px solid white;
+            transition: all 0.3s ease;
+        }
+
+        /* Sequential Animation for Step Numbers */
+        .timeline-step:nth-child(1) .step-number {
+            animation: stepNumberHighlight 12s ease-in-out infinite;
+            animation-delay: 0s;
+            animation-play-state: paused;
+        }
+
+        .timeline-step:nth-child(2) .step-number {
+            animation: stepNumberHighlight 12s ease-in-out infinite;
+            animation-delay: 4s;
+            animation-play-state: paused;
+        }
+
+        .timeline-step:nth-child(3) .step-number {
+            animation: stepNumberHighlight 12s ease-in-out infinite;
+            animation-delay: 8s;
+            animation-play-state: paused;
+        }
+
+        /* Start animations when visible */
+        .process-timeline.animate .timeline-step:nth-child(1) .step-number {
+            animation-play-state: running;
+        }
+
+        .process-timeline.animate .timeline-step:nth-child(2) .step-number {
+            animation-play-state: running;
+        }
+
+        .process-timeline.animate .timeline-step:nth-child(3) .step-number {
+            animation-play-state: running;
+        }
+
+        @keyframes stepNumberHighlight {
+            0%, 25% {
+                transform: scale(1);
+                background: #bdc3c7;
+                color: white;
+                box-shadow: 0 8px 25px rgba(189, 195, 199, 0.4);
+            }
+            8.33%, 16.67% {
+                transform: scale(1.1);
+                background: #27ae60;
+                color: white;
+                box-shadow: 0 12px 35px rgba(39, 174, 96, 0.6);
+            }
+        }
+
+        .step-content {
+            flex: 1;
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 4px solid #2c3e50;
+            box-shadow: 0 12px 40px rgba(44, 62, 80, 0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #2c3e50;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+
+        /* Sequential Animation for Steps */
+        .timeline-step:nth-child(1) .step-content {
+            animation: stepHighlight 12s ease-in-out infinite;
+            animation-delay: 0s;
+            animation-play-state: paused;
+        }
+
+        .timeline-step:nth-child(2) .step-content {
+            animation: stepHighlight 12s ease-in-out infinite;
+            animation-delay: 4s;
+            animation-play-state: paused;
+        }
+
+        .timeline-step:nth-child(3) .step-content {
+            animation: stepHighlight 12s ease-in-out infinite;
+            animation-delay: 8s;
+            animation-play-state: paused;
+        }
+
+        /* Start animations when visible */
+        .process-timeline.animate .timeline-step:nth-child(1) .step-content {
+            animation-play-state: running;
+        }
+
+        .process-timeline.animate .timeline-step:nth-child(2) .step-content {
+            animation-play-state: running;
+        }
+
+        .process-timeline.animate .timeline-step:nth-child(3) .step-content {
+            animation-play-state: running;
+        }
+
+        @keyframes stepHighlight {
+            0%, 25% {
+                background: #ffffff;
+                transform: translateX(0) translateY(0);
+                box-shadow: 0 12px 40px rgba(44, 62, 80, 0.15);
+                border-left-width: 4px;
+                border-right-width: 4px;
+                border-left-color: #2c3e50;
+                border-right-color: #2c3e50;
+            }
+            8.33%, 16.67% {
+                background: #f8f9fa;
+                transform: translateX(8px) translateY(-6px);
+                box-shadow: 0 20px 60px rgba(39, 174, 96, 0.25);
+                border-left-width: 8px;
+                border-right-width: 8px;
+                border-left-color: #27ae60;
+                border-right-color: #27ae60;
+            }
+        }
+
+        .step-content h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: #2c3e50;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-content p {
+            color: #34495e;
+            line-height: 1.7;
+            margin: 0;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-connector {
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+            height: 60px;
+        }
+
+        .connector-line {
+            width: 3px;
+            height: 40px;
+            background: #2c3e50;
+            border-radius: 2px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .connector-line::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 10px solid #2c3e50;
+            transition: all 0.3s ease;
+        }
+
+        /* Sequential Animation for Connector Lines */
+        .timeline-step:nth-child(1) .connector-line {
+            animation: connectorHighlight 12s ease-in-out infinite;
+            animation-delay: 0s;
+            animation-play-state: paused;
+        }
+
+        .timeline-step:nth-child(2) .connector-line {
+            animation: connectorHighlight 12s ease-in-out infinite;
+            animation-delay: 4s;
+            animation-play-state: paused;
+        }
+
+        /* Start animations when visible */
+        .process-timeline.animate .timeline-step:nth-child(1) .connector-line {
+            animation-play-state: running;
+        }
+
+        .process-timeline.animate .timeline-step:nth-child(2) .connector-line {
+            animation-play-state: running;
+        }
+
+        @keyframes connectorHighlight {
+            0%, 25% {
+                background: #2c3e50;
+            }
+            8.33%, 16.67% {
+                background: #27ae60;
+            }
+        }
+
+        @keyframes connectorArrowHighlight {
+            0%, 25% {
+                border-top-color: #2c3e50;
+            }
+            8.33%, 16.67% {
+                border-top-color: #27ae60;
+            }
+        }
+
+        .timeline-step:nth-child(1) .connector-line::after {
+            animation: connectorArrowHighlight 12s ease-in-out infinite;
+            animation-delay: 0s;
+            animation-play-state: paused;
+        }
+
+        .timeline-step:nth-child(2) .connector-line::after {
+            animation: connectorArrowHighlight 12s ease-in-out infinite;
+            animation-delay: 4s;
+            animation-play-state: paused;
+        }
+
+        /* Start animations when visible */
+        .process-timeline.animate .timeline-step:nth-child(1) .connector-line::after {
+            animation-play-state: running;
+        }
+
+        .process-timeline.animate .timeline-step:nth-child(2) .connector-line::after {
+            animation-play-state: running;
+        }
+
+        .connector-arrow {
+            display: none;
+        }
+
         /* Cover Photo Section */
         .cover-section {
             width: 100%;
@@ -408,15 +887,23 @@
         }
 
         .project-card {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: all 0.4s ease;
             position: relative;
             border-radius: 15px;
             width: 100%;
             margin: 0;
             padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: rgba(255, 255, 255, 0.15);
         }
 
 
@@ -448,7 +935,8 @@
         .project-text {
             padding: 1.5rem;
             text-align: center;
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             width: 100%;
             box-sizing: border-box;
             cursor: default;
@@ -461,16 +949,235 @@
         .project-text h3 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            color: #333;
+            color: #ffffff;
+            font-weight: 600;
         }
 
         .project-text p {
-            color: #666;
+            color: #e8f4f8;
             line-height: 1.6;
         }
 
 
         /* Call to Action */
+        /* Customer Reviews Section */
+        .reviews-section {
+            padding: 4rem 0;
+            background: white;
+            margin-top: 4rem;
+        }
+
+        .reviews-section .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .reviews-section .section-header p {
+            font-size: 1.2rem;
+            color: #34495e;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+
+        .reviews-container {
+            overflow: hidden;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .reviews-track {
+            display: flex;
+            gap: 2rem;
+            animation: scroll 30s linear infinite;
+            width: calc(200% + 4rem);
+            padding: 20px 0;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .reviews-track:hover {
+            animation-play-state: paused;
+        }
+
+        .review-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: box-shadow 0.2s ease;
+            border: 1px solid #e9ecef;
+            flex: 0 0 350px;
+            min-width: 350px;
+        }
+
+        .review-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            background: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #6c757d;
+            font-size: 1rem;
+            flex-shrink: 0;
+            border: 2px solid #e9ecef;
+        }
+
+        .reviewer-info h4 {
+            margin: 0 0 0.5rem 0;
+            color: #2c3e50;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 0.2rem;
+        }
+
+        .star {
+            color: #ddd;
+            font-size: 1rem;
+        }
+
+        .star.filled {
+            color: #ffc107;
+        }
+
+        .review-text {
+            color: #495057;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-date {
+            color: #6c757d;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Trust Stats */
+        .trust-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid #f8f9fa;
+        }
+
+        .trust-stat {
+            text-align: center;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .trust-stat:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Mobile Responsive for Reviews */
+        @media (max-width: 768px) {
+            .reviews-section {
+                padding: 2rem 0;
+            }
+
+            .reviews-container {
+                margin-top: 2rem;
+                padding: 15px 0;
+            }
+
+            .reviews-track {
+                gap: 1.5rem;
+                animation-duration: 25s;
+                padding: 15px 0;
+            }
+
+            .review-card {
+                flex: 0 0 280px;
+                min-width: 280px;
+                padding: 1.25rem;
+            }
+
+            .reviewer-avatar {
+                width: 45px;
+                height: 45px;
+                font-size: 0.9rem;
+            }
+
+            .reviewer-info h4 {
+                font-size: 1rem;
+            }
+
+            .review-text {
+                font-size: 0.9rem;
+            }
+
+            .trust-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+            }
+        }
+
         .cta-section {
             background: white;
             padding: 3rem 2rem;
@@ -685,22 +1392,24 @@
         position: absolute;
         top: 0;
         left: 50%;
-        width: 4px;
+        width: 1px;
         height: 100%;
         background: white;
         box-shadow: 0 0 5px rgba(0,0,0,0.4);
+        transform: translateX(-50%);
         z-index: 10;
         cursor: ew-resize;
+        padding: 0 8px; /* Add padding to increase clickable area on desktop */
     }
 
     .ba-slider::before {
         content: '';
         position: absolute;
         top: 50%;
-        left: -10px;
-        transform: translateY(-50%);
-        width: 20px;
-        height: 20px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 16px;
+        height: 16px;
         background: white;
         border: 2px solid #333;
         border-radius: 50%;
@@ -710,22 +1419,23 @@
     /* Make slider more touch-friendly on mobile */
     @media (max-width: 768px) {
         .ba-slider {
-            width: 6px; /* Slightly thicker on mobile */
+            width: 1px; /* Very thin line on mobile */
         }
         
         .ba-slider::before {
-            width: 30px; /* Larger handle for easier touch */
-            height: 30px;
-            left: -15px; /* Adjust position for larger handle */
-            border: 3px solid #333;
+            width: 20px; /* Smaller handle for mobile */
+            height: 20px;
+            left: 50%; /* Center the handle */
+            transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+            border: 2px solid #333;
         }
         
         .ba-slider::after {
             content: '';
             position: absolute;
             top: 0;
-            left: -20px; /* Invisible touch area */
-            width: 40px; /* Wider invisible touch area */
+            left: -15px; /* Smaller invisible touch area */
+            width: 30px; /* Smaller invisible touch area */
             height: 100%;
             background: transparent;
             cursor: ew-resize;
@@ -1061,11 +1771,16 @@
         transition: all 0.3s ease;
         background: white;
         position: relative;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        user-select: none; /* Prevent text selection when clicking */
     }
     
     .service-option:hover {
         transform: scale(1.01);
         box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        border-color: #34495e;
     }
     
     .service-option.selected {
@@ -1080,6 +1795,70 @@
     .service-option.selected .service-price,
     .service-option.selected .service-description {
         color: white !important;
+    }
+
+    /* Service Checkbox Styling */
+    .service-checkbox {
+        flex-shrink: 0;
+        margin-top: 0.2rem;
+    }
+
+    .service-checkbox input[type="checkbox"] {
+        display: none;
+    }
+
+    .service-checkbox label {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        background: white;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease;
+        display: block;
+    }
+
+    .service-checkbox input[type="checkbox"]:checked + label {
+        background: #34495e;
+        border-color: #34495e;
+    }
+
+    .service-checkbox input[type="checkbox"]:checked + label:after {
+        content: '✓';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .service-option.selected .service-checkbox label {
+        background: white;
+        border-color: white;
+    }
+
+    .service-option.selected .service-checkbox input[type="checkbox"]:checked + label {
+        background: white;
+        border-color: white;
+    }
+
+    .service-option.selected .service-checkbox input[type="checkbox"]:checked + label:after {
+        color: #34495e;
+    }
+
+    .service-content {
+        flex: 1;
+    }
+
+    /* Service Navigation */
+    .service-navigation {
+        text-align: center;
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e1e8ed;
     }
     
     .service-name {
@@ -1327,6 +2106,340 @@
     .hero-carousel-mobile {
         display: block;
         }
+
+    /* Why Choose Dry Ice Section - Mobile */
+    .why-choose-section {
+        padding: 2rem 0;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .reasons-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .reason-card {
+        padding: 1.5rem;
+    }
+
+    .reason-icon {
+        font-size: 2.5rem;
+    }
+
+    .reason-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .reason-card p {
+        font-size: 0.9rem;
+    }
+
+    /* Cleaning Process Section - Mobile */
+    .process-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+
+    .process-section {
+        padding: 2rem 0;
+    }
+
+    .process-section .container {
+        padding: 0 1rem;
+    }
+
+    .video-container {
+        padding: 0.5rem;
+        min-height: 400px;
+    }
+
+    .video-content img {
+        border-radius: 8px;
+    }
+
+    .video-content h3 {
+        font-size: 1.3rem !important;
+    }
+
+    .video-content p {
+        font-size: 0.9rem !important;
+    }
+
+    .process-timeline {
+        gap: 0;
+        padding: 0.5rem 0;
+        margin: 0;
+    }
+
+    .timeline-step {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+        padding: 1rem 0;
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    .timeline-step:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .timeline-step:last-child {
+        margin-bottom: 0;
+    }
+
+    .timeline-step:last-child .timeline-connector {
+        display: none;
+    }
+
+    .step-number {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+        margin: 0 auto 1rem auto;
+        border: 2px solid white;
+        display: block;
+        position: relative;
+        z-index: 2;
+        background: #bdc3c7;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        box-shadow: 0 6px 20px rgba(189, 195, 199, 0.4);
+    }
+
+    /* Sequential Animation for Mobile Step Numbers */
+    .timeline-step:nth-child(1) .step-number {
+        animation: stepNumberHighlightMobile 12s ease-in-out infinite;
+        animation-delay: 0s;
+        animation-play-state: paused;
+    }
+
+    .timeline-step:nth-child(2) .step-number {
+        animation: stepNumberHighlightMobile 12s ease-in-out infinite;
+        animation-delay: 4s;
+        animation-play-state: paused;
+    }
+
+    .timeline-step:nth-child(3) .step-number {
+        animation: stepNumberHighlightMobile 12s ease-in-out infinite;
+        animation-delay: 8s;
+        animation-play-state: paused;
+    }
+
+    /* Start animations when visible */
+    .process-timeline.animate .timeline-step:nth-child(1) .step-number {
+        animation-play-state: running;
+    }
+
+    .process-timeline.animate .timeline-step:nth-child(2) .step-number {
+        animation-play-state: running;
+    }
+
+    .process-timeline.animate .timeline-step:nth-child(3) .step-number {
+        animation-play-state: running;
+    }
+
+    @keyframes stepNumberHighlightMobile {
+        0%, 25% {
+            transform: scale(1);
+            background: #bdc3c7;
+            color: white;
+            box-shadow: 0 6px 20px rgba(189, 195, 199, 0.4);
+        }
+        8.33%, 16.67% {
+            transform: scale(1.05);
+            background: #27ae60;
+            color: white;
+            box-shadow: 0 10px 30px rgba(39, 174, 96, 0.6);
+        }
+    }
+
+    .step-content {
+        padding: 1.2rem;
+        text-align: center;
+        border-left: none;
+        border-right: none;
+        border-top: 3px solid #2c3e50;
+        margin: 0 0.5rem;
+        background: #ffffff;
+        box-shadow: 0 8px 25px rgba(44, 62, 80, 0.15);
+        border-radius: 12px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .timeline-step:nth-child(even) .step-content {
+        border-left: none;
+        border-right: none;
+        border-top: 3px solid #2c3e50;
+    }
+
+    /* Sequential Animation for Mobile Steps */
+    .timeline-step:nth-child(1) .step-content {
+        animation: stepHighlightMobile 12s ease-in-out infinite;
+        animation-delay: 0s;
+        animation-play-state: paused;
+    }
+
+    .timeline-step:nth-child(2) .step-content {
+        animation: stepHighlightMobile 12s ease-in-out infinite;
+        animation-delay: 4s;
+        animation-play-state: paused;
+    }
+
+    .timeline-step:nth-child(3) .step-content {
+        animation: stepHighlightMobile 12s ease-in-out infinite;
+        animation-delay: 8s;
+        animation-play-state: paused;
+    }
+
+    /* Start animations when visible */
+    .process-timeline.animate .timeline-step:nth-child(1) .step-content {
+        animation-play-state: running;
+    }
+
+    .process-timeline.animate .timeline-step:nth-child(2) .step-content {
+        animation-play-state: running;
+    }
+
+    .process-timeline.animate .timeline-step:nth-child(3) .step-content {
+        animation-play-state: running;
+    }
+
+    @keyframes stepHighlightMobile {
+        0%, 25% {
+            background: #ffffff;
+            transform: translateY(0);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.15);
+            border-top-width: 3px;
+            border-top-color: #2c3e50;
+        }
+        8.33%, 16.67% {
+            background: #f8f9fa;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(39, 174, 96, 0.25);
+            border-top-width: 6px;
+            border-top-color: #27ae60;
+        }
+    }
+
+    .step-content h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: #2c3e50;
+        font-weight: 700;
+    }
+
+    .step-content p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: #34495e;
+        margin: 0;
+    }
+
+    .timeline-connector {
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 30px;
+        z-index: 1;
+        margin-top: 0.5rem;
+    }
+
+    .connector-line {
+        width: 2px;
+        height: 20px;
+        background: #2c3e50;
+        border-radius: 1px;
+        transition: all 0.3s ease;
+    }
+
+    .connector-line::after {
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        border-top: 6px solid #2c3e50;
+        bottom: -5px;
+        transition: all 0.3s ease;
+    }
+
+    /* Sequential Animation for Mobile Connector Lines */
+    .timeline-step:nth-child(1) .connector-line {
+        animation: connectorHighlightMobile 12s ease-in-out infinite;
+        animation-delay: 0s;
+        animation-play-state: paused;
+    }
+
+    .timeline-step:nth-child(2) .connector-line {
+        animation: connectorHighlightMobile 12s ease-in-out infinite;
+        animation-delay: 4s;
+        animation-play-state: paused;
+    }
+
+    /* Start animations when visible */
+    .process-timeline.animate .timeline-step:nth-child(1) .connector-line {
+        animation-play-state: running;
+    }
+
+    .process-timeline.animate .timeline-step:nth-child(2) .connector-line {
+        animation-play-state: running;
+    }
+
+    @keyframes connectorHighlightMobile {
+        0%, 25% {
+            background: #2c3e50;
+        }
+        8.33%, 16.67% {
+            background: #27ae60;
+        }
+    }
+
+    @keyframes connectorArrowHighlightMobile {
+        0%, 25% {
+            border-top-color: #2c3e50;
+        }
+        8.33%, 16.67% {
+            border-top-color: #27ae60;
+        }
+    }
+
+    .timeline-step:nth-child(1) .connector-line::after {
+        animation: connectorArrowHighlightMobile 12s ease-in-out infinite;
+        animation-delay: 0s;
+        animation-play-state: paused;
+    }
+
+    .timeline-step:nth-child(2) .connector-line::after {
+        animation: connectorArrowHighlightMobile 12s ease-in-out infinite;
+        animation-delay: 4s;
+        animation-play-state: paused;
+    }
+
+    /* Start animations when visible */
+    .process-timeline.animate .timeline-step:nth-child(1) .connector-line::after {
+        animation-play-state: running;
+    }
+
+    .process-timeline.animate .timeline-step:nth-child(2) .connector-line::after {
+        animation-play-state: running;
+    }
 
     .projects-grid {
         grid-template-columns: 1fr;
@@ -1615,7 +2728,56 @@
         padding: 0.8rem !important;
         font-size: 0.9rem !important;
     }
-}
+    }
+
+    /* Service Cards Styles */
+    .service-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.3) !important;
+    }
+
+    .service-card .service-icon img {
+        transition: transform 0.3s ease;
+    }
+
+    .service-card:hover .service-icon img {
+        transform: scale(1.1);
+    }
+
+    .book-service-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4) !important;
+        background: linear-gradient(135deg, #2980b9, #1f5f8b) !important;
+    }
+
+    .book-service-btn:active {
+        transform: translateY(0);
+    }
+
+    /* Service Grid Responsive */
+    @media (max-width: 768px) {
+        .services-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+        }
+        
+        .service-card {
+            padding: 1.5rem !important;
+        }
+        
+        .service-icon img {
+            width: 100px !important;
+            height: 100px !important;
+        }
+        
+        .service-price {
+            font-size: 1.8rem !important;
+        }
+    }
     </style>
 </head>
 <body>
@@ -1699,20 +2861,392 @@
 
     <div class="carousel-dots" id="carousel-dots"></div>
 
-    <!-- Home Content Wrapper -->
-    <div class="home-content">
-        <!-- Cover Photo Section -->
-        <div class="cover-section">
-            <div class="cover-overlay"></div>
-            <div class="cover-content">
-                <h1>V0.8</h1>
-                <p>Explore our previous projects</p>
+    <!-- 0.95 Section -->
+    <div class="cover-section">
+        <div class="cover-overlay"></div>
+        <div class="cover-content">
+            <h1>V0.95</h1>
+        </div>
+    </div>
+
+    <!-- Why Choose Dry Ice Section -->
+    <div class="why-choose-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Why Choose Dry Ice?</h2>
+                <p>Discover the advantages of our advanced dry ice cleaning technology</p>
+            </div>
+            <div class="reasons-grid">
+                <div class="reason-card fade-in-slow">
+                    <div class="reason-icon">❄️</div>
+                    <h3>Eco-Friendly Cleaning</h3>
+                    <p>Dry ice cleaning is completely chemical-free and environmentally safe. No harmful residues or secondary waste - just clean, pure results.</p>
+                </div>
+                <div class="reason-card fade-in-slow">
+                    <div class="reason-icon">⚡</div>
+                    <h3>Superior Performance</h3>
+                    <p>Our dry ice blasting removes contaminants that traditional methods can't touch, delivering unmatched cleaning power and precision.</p>
+                </div>
+                <div class="reason-card fade-in-slow">
+                    <div class="reason-icon">🛡️</div>
+                    <h3>Non-Abrasive & Safe</h3>
+                    <p>Gentle on surfaces while tough on dirt. Dry ice sublimates on contact, leaving no residue and protecting your valuable assets.</p>
+                </div>
             </div>
         </div>
+    </div>
 
+    <!-- Cleaning Process Section -->
+    <div class="process-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Our Cleaning Process</h2>
+                <p>Experience the power of dry ice blasting technology in action</p>
+            </div>
+            <div class="process-content">
+                <div class="video-container fade-in-slow">
+                    <div class="video-content">
+                        <img src="gif.gif" alt="Dry Ice Cleaning Process" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                    </div>
+                </div>
+                <div class="process-timeline fade-in-slow">
+                    <div class="timeline-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Assessment</h4>
+                            <p>We evaluate your cleaning needs and prepare the workspace</p>
+                        </div>
+                        <div class="timeline-connector">
+                            <div class="connector-line"></div>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Dry Ice Blasting</h4>
+                            <p>High-pressure dry ice particles remove contaminants without damage</p>
+                        </div>
+                        <div class="timeline-connector">
+                            <div class="connector-line"></div>
+                        </div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Inspection</h4>
+                            <p>Thorough quality check ensures perfect results</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Content Wrapper -->
+    <div class="home-content">
         <div class="container fade-in-delayed" style="margin-top: 3rem; width: 100%;">
+            <div class="section-header fade-in">
+                <h2>Our Previous Works</h2>
+                <p>Explore our portfolio of successful dry ice cleaning projects</p>
+            </div>
             <div class="projects-grid fade-in-slow" id="projects-container">
                 <!-- Projects will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Reviews Section -->
+    <div class="reviews-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>What Our Customers Say</h2>
+                <p>Real reviews from satisfied customers who experienced our services</p>
+            </div>
+            
+            <div class="reviews-container fade-in-slow">
+                <div class="reviews-track">
+                    <!-- First set of reviews -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <span>MK</span>
+                            </div>
+                            <div class="reviewer-info">
+                                <h4>Mohammed Al-Khalid</h4>
+                                <div class="review-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Absolutely incredible service! The dry ice blasting completely transformed my car's engine bay. It looked brand new when they were done. The team was professional, punctual, and the results exceeded my expectations. Highly recommended!"
+                        </p>
+                        <div class="review-date">2 weeks ago</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <span>SA</span>
+                            </div>
+                            <div class="reviewer-info">
+                                <h4>Sarah Abdullah</h4>
+                                <div class="review-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "I was skeptical at first, but the results speak for themselves! My classic car needed a gentle yet effective cleaning, and dry ice blasting was perfect. No chemicals, no damage, just pristine results. Worth every penny!"
+                        </p>
+                        <div class="review-date">3 weeks ago</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <span>AF</span>
+                            </div>
+                            <div class="reviewer-info">
+                                <h4>Ahmed Faisal</h4>
+                                <div class="review-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Best detailing service I've ever used! The booking system was easy to use, and they were very accommodating with my schedule. My SUV looks showroom-ready. The attention to detail is remarkable!"
+                        </p>
+                        <div class="review-date">1 month ago</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <span>LM</span>
+                            </div>
+                            <div class="reviewer-info">
+                                <h4>Layla Mohammed</h4>
+                                <div class="review-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Eco-friendly and effective! I love that they use dry ice cleaning - it's safe for the environment and my car. The team explained the entire process and the results were outstanding. Will definitely return!"
+                        </p>
+                        <div class="review-date">1 month ago</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <span>KA</span>
+                            </div>
+                            <div class="reviewer-info">
+                                <h4>Khalid Aziz</h4>
+                                <div class="review-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Phenomenal work! They removed years of grime and buildup from my truck's undercarriage. The dry ice technology is impressive - no mess, no residue. Professional service from start to finish!"
+                        </p>
+                        <div class="review-date">2 months ago</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <span>NR</span>
+                            </div>
+                            <div class="reviewer-info">
+                                <h4>Noor Rahman</h4>
+                                <div class="review-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Five stars all around! Excellent communication, fair pricing, and spectacular results. They truly care about their work and it shows. My car has never looked better. Thank you V0.9!"
+                        </p>
+                        <div class="review-date">2 months ago</div>
+                    </div>
+
+                    <!-- Duplicate set for seamless loop -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <span>MK</span>
+                            </div>
+                            <div class="reviewer-info">
+                                <h4>Mohammed Al-Khalid</h4>
+                                <div class="review-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Absolutely incredible service! The dry ice blasting completely transformed my car's engine bay. It looked brand new when they were done. The team was professional, punctual, and the results exceeded my expectations. Highly recommended!"
+                        </p>
+                        <div class="review-date">2 weeks ago</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <span>SA</span>
+                            </div>
+                            <div class="reviewer-info">
+                                <h4>Sarah Abdullah</h4>
+                                <div class="review-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "I was skeptical at first, but the results speak for themselves! My classic car needed a gentle yet effective cleaning, and dry ice blasting was perfect. No chemicals, no damage, just pristine results. Worth every penny!"
+                        </p>
+                        <div class="review-date">3 weeks ago</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <span>AF</span>
+                            </div>
+                            <div class="reviewer-info">
+                                <h4>Ahmed Faisal</h4>
+                                <div class="review-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Best detailing service I've ever used! The booking system was easy to use, and they were very accommodating with my schedule. My SUV looks showroom-ready. The attention to detail is remarkable!"
+                        </p>
+                        <div class="review-date">1 month ago</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <span>LM</span>
+                            </div>
+                            <div class="reviewer-info">
+                                <h4>Layla Mohammed</h4>
+                                <div class="review-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Eco-friendly and effective! I love that they use dry ice cleaning - it's safe for the environment and my car. The team explained the entire process and the results were outstanding. Will definitely return!"
+                        </p>
+                        <div class="review-date">1 month ago</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <span>KA</span>
+                            </div>
+                            <div class="reviewer-info">
+                                <h4>Khalid Aziz</h4>
+                                <div class="review-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Phenomenal work! They removed years of grime and buildup from my truck's undercarriage. The dry ice technology is impressive - no mess, no residue. Professional service from start to finish!"
+                        </p>
+                        <div class="review-date">2 months ago</div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-avatar">
+                                <span>NR</span>
+                            </div>
+                            <div class="reviewer-info">
+                                <h4>Noor Rahman</h4>
+                                <div class="review-stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">
+                            "Five stars all around! Excellent communication, fair pricing, and spectacular results. They truly care about their work and it shows. My car has never looked better. Thank you V0.9!"
+                        </p>
+                        <div class="review-date">2 months ago</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="trust-stats fade-in-delayed">
+                <div class="trust-stat">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="trust-stat">
+                    <div class="stat-number">4.9</div>
+                    <div class="stat-label">Average Rating</div>
+                </div>
+                <div class="trust-stat">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
             </div>
         </div>
     </div>
@@ -1732,7 +3266,115 @@
 <div id="services" class="page-section">
     <div class="container">
         <div class="fade-in">
-            <h2 style="text-align: center; color: white; margin-bottom: 2rem; font-size: 2.5rem; margin-top: 0; padding-top: 20px;">Book Your Service</h2>
+            <h2 style="text-align: center; color: white; margin-bottom: 2rem; font-size: 2.5rem; margin-top: 0; padding-top: 20px;">Our Services</h2>
+        </div>
+        
+        <!-- Services Overview Section -->
+        <div class="services-overview fade-in-slow" style="margin-bottom: 3rem;">
+            <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                
+                <!-- Basic Wash Service -->
+                <div class="service-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;">
+                    <div class="service-icon" style="margin-bottom: 1rem;">
+                        <img src="1.png" alt="Basic Wash Service" style="width: 120px; height: 120px; border-radius: 15px; object-fit: cover;">
+                    </div>
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem; font-size: 1.5rem;">Basic Wash</h3>
+                    <div class="service-price" style="font-size: 2rem; color: #e74c3c; font-weight: bold; margin-bottom: 1rem;">$25</div>
+                    <div class="service-description" style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                        <p><strong>Perfect for regular maintenance:</strong></p>
+                        <ul style="text-align: left; margin: 1rem 0;">
+                            <li>Complete exterior wash with premium soap</li>
+                            <li>Interior vacuum and dusting</li>
+                            <li>Window cleaning (inside & out)</li>
+                            <li>Tire and rim cleaning</li>
+                            <li>Dashboard wipe-down</li>
+                        </ul>
+                        <p style="font-size: 0.9rem; color: #888;">Duration: 1-2 hours</p>
+                    </div>
+                    <button class="book-service-btn" onclick="scrollToBooking()" style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; border: none; padding: 12px 30px; border-radius: 25px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);">
+                        Book Now
+                    </button>
+                </div>
+
+                <!-- Standard Polish Service -->
+                <div class="service-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;">
+                    <div class="service-icon" style="margin-bottom: 1rem;">
+                        <img src="2.png" alt="Standard Polish Service" style="width: 120px; height: 120px; border-radius: 15px; object-fit: cover;">
+                    </div>
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem; font-size: 1.5rem;">Standard Polish</h3>
+                    <div class="service-price" style="font-size: 2rem; color: #e74c3c; font-weight: bold; margin-bottom: 1rem;">$75</div>
+                    <div class="service-description" style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                        <p><strong>Enhanced shine and protection:</strong></p>
+                        <ul style="text-align: left; margin: 1rem 0;">
+                            <li>Everything in Basic Wash</li>
+                            <li>Exterior polish application</li>
+                            <li>Premium wax coating</li>
+                            <li>Paint correction (minor scratches)</li>
+                            <li>Headlight restoration</li>
+                            <li>Interior leather conditioning</li>
+                        </ul>
+                        <p style="font-size: 0.9rem; color: #888;">Duration: 2-3 hours</p>
+                    </div>
+                    <button class="book-service-btn" onclick="scrollToBooking()" style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; border: none; padding: 12px 30px; border-radius: 25px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);">
+                        Book Now
+                    </button>
+                </div>
+
+                <!-- Premium Detail Service -->
+                <div class="service-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;">
+                    <div class="service-icon" style="margin-bottom: 1rem;">
+                        <img src="3.png" alt="Premium Detail Service" style="width: 120px; height: 120px; border-radius: 15px; object-fit: cover;">
+                    </div>
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem; font-size: 1.5rem;">Premium Detail</h3>
+                    <div class="service-price" style="font-size: 2rem; color: #e74c3c; font-weight: bold; margin-bottom: 1rem;">$150</div>
+                    <div class="service-description" style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                        <p><strong>Complete interior and exterior detailing:</strong></p>
+                        <ul style="text-align: left; margin: 1rem 0;">
+                            <li>Everything in Standard Polish</li>
+                            <li>Deep interior cleaning</li>
+                            <li>Steam cleaning carpets & seats</li>
+                            <li>Engine bay cleaning</li>
+                            <li>Clay bar treatment</li>
+                            <li>Paint protection coating</li>
+                            <li>Interior protection treatment</li>
+                        </ul>
+                        <p style="font-size: 0.9rem; color: #888;">Duration: 3-4 hours</p>
+                    </div>
+                    <button class="book-service-btn" onclick="scrollToBooking()" style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; border: none; padding: 12px 30px; border-radius: 25px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);">
+                        Book Now
+                    </button>
+                </div>
+
+                <!-- Ultimate Package Service -->
+                <div class="service-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;">
+                    <div class="service-icon" style="margin-bottom: 1rem;">
+                        <img src="4.png" alt="Ultimate Package Service" style="width: 120px; height: 120px; border-radius: 15px; object-fit: cover;">
+                    </div>
+                    <h3 style="color: #2c3e50; margin-bottom: 1rem; font-size: 1.5rem;">Ultimate Package</h3>
+                    <div class="service-price" style="font-size: 2rem; color: #e74c3c; font-weight: bold; margin-bottom: 1rem;">$300</div>
+                    <div class="service-description" style="color: #666; line-height: 1.6; margin-bottom: 1.5rem;">
+                        <p><strong>Showroom-quality detailing with premium products:</strong></p>
+                        <ul style="text-align: left; margin: 1rem 0;">
+                            <li>Everything in Premium Detail</li>
+                            <li>Multi-stage paint correction</li>
+                            <li>Ceramic coating application</li>
+                            <li>Interior ceramic protection</li>
+                            <li>Paint depth analysis</li>
+                            <li>Before/after photos</li>
+                            <li>6-month warranty</li>
+                        </ul>
+                        <p style="font-size: 0.9rem; color: #888;">Duration: 4-5 hours</p>
+                    </div>
+                    <button class="book-service-btn" onclick="scrollToBooking()" style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; border: none; padding: 12px 30px; border-radius: 25px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking System Section -->
+        <div class="fade-in">
+            <h2 style="text-align: center; color: white; margin-bottom: 2rem; font-size: 2.5rem;">Book Your Service</h2>
         </div>
         <div class="booking-section fade-in">
             <div class="booking-header fade-in-slow">
@@ -1808,28 +3450,58 @@
 
                 <!-- Step 3: Service Selection -->
                 <div class="service-selection" id="serviceStep" style="display: none;">
-                    <h3 style="margin-bottom: 1rem; color: #2c3e50; font-size: 1.2rem;">Choose Your Service</h3>
+                    <h3 style="margin-bottom: 1rem; color: #2c3e50; font-size: 1.2rem;">Choose Your Services</h3>
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">You can select multiple services for your appointment</p>
                     <div class="service-options">
-                        <div class="service-option" data-service="basic">
-                            <div class="service-name">Basic Wash</div>
-                            <div class="service-price">$25</div>
-                            <div class="service-description">Exterior wash, interior vacuum, and basic cleaning</div>
+                        <div class="service-option" data-service="basic" data-price="25">
+                            <div class="service-checkbox">
+                                <input type="checkbox" id="service-basic" name="services" value="basic">
+                                <label for="service-basic"></label>
+                            </div>
+                            <div class="service-content">
+                                <div class="service-name">Basic Wash</div>
+                                <div class="service-price">$25</div>
+                                <div class="service-description">Exterior wash, interior vacuum, and basic cleaning</div>
+                            </div>
                         </div>
-                        <div class="service-option" data-service="standard">
-                            <div class="service-name">Standard Polish</div>
-                            <div class="service-price">$75</div>
-                            <div class="service-description">Basic wash plus exterior polish and wax</div>
+                        <div class="service-option" data-service="standard" data-price="75">
+                            <div class="service-checkbox">
+                                <input type="checkbox" id="service-standard" name="services" value="standard">
+                                <label for="service-standard"></label>
+                            </div>
+                            <div class="service-content">
+                                <div class="service-name">Standard Polish</div>
+                                <div class="service-price">$75</div>
+                                <div class="service-description">Basic wash plus exterior polish and wax</div>
+                            </div>
                         </div>
-                        <div class="service-option" data-service="premium">
-                            <div class="service-name">Premium Detail</div>
-                            <div class="service-price">$150</div>
-                            <div class="service-description">Complete interior and exterior detailing</div>
+                        <div class="service-option" data-service="premium" data-price="150">
+                            <div class="service-checkbox">
+                                <input type="checkbox" id="service-premium" name="services" value="premium">
+                                <label for="service-premium"></label>
+                            </div>
+                            <div class="service-content">
+                                <div class="service-name">Premium Detail</div>
+                                <div class="service-price">$150</div>
+                                <div class="service-description">Complete interior and exterior detailing</div>
+                            </div>
                         </div>
-                        <div class="service-option" data-service="ultimate">
-                            <div class="service-name">Ultimate Package</div>
-                            <div class="service-price">$300</div>
-                            <div class="service-description">Showroom-quality detailing with premium products</div>
+                        <div class="service-option" data-service="ultimate" data-price="300">
+                            <div class="service-checkbox">
+                                <input type="checkbox" id="service-ultimate" name="services" value="ultimate">
+                                <label for="service-ultimate"></label>
+                            </div>
+                            <div class="service-content">
+                                <div class="service-name">Ultimate Package</div>
+                                <div class="service-price">$300</div>
+                                <div class="service-description">Showroom-quality detailing with premium products</div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="service-navigation">
+                        <button type="button" class="nav-btn next-btn" onclick="bookingSystem.nextStep()" id="serviceNextBtn" style="display: none;">
+                            Continue to Details →
+                        </button>
                     </div>
                 </div>
 
@@ -1929,41 +3601,149 @@
     <div class="container">
         <div class="fade-in">
             <h2 style="text-align: center; color: white; margin-bottom: 2rem; font-size: 2.5rem; margin-top: 0; padding-top: 20px;">About Us</h2>
-            <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                <h3 style="color: #333; margin-bottom: 1rem;">Bariq Al-Ma'dan</h3>
-                <p style="color: #666; line-height: 1.8; margin-bottom: 1rem;">
-                    We are a professional car detailing service dedicated to bringing your vehicle back to its showroom condition. 
-                    With years of experience and attention to detail, we provide premium automotive care services.
-                </p>
-                <p style="color: #666; line-height: 1.8;">
-                    Our team uses only the highest quality products and techniques to ensure your car receives the care it deserves.
-                </p>
+            
+            <!-- Company Overview -->
+            <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); margin-bottom: 2rem;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h3 style="color: #333; margin-bottom: 0.5rem; font-size: 2rem;">Bariq Al-Ma'dan</h3>
+                    <p style="color: #666; font-size: 1.1rem; font-style: italic;">Premium Automotive Care Excellence</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <!-- Our Story -->
+                    <div>
+                        <h4 style="color: #333; margin-bottom: 1rem; font-size: 1.3rem; display: flex; align-items: center;">
+                            <span style="background: linear-gradient(45deg, #2c3e50, #34495e); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 0.75rem; font-size: 1.1rem;">📖</span>
+                            Our Story
+                        </h4>
+                        <p style="color: #666; line-height: 1.8; margin-bottom: 1rem;">
+                            Founded with a passion for automotive excellence, Bariq Al-Ma'dan has been dedicated to bringing vehicles back to their showroom condition for over a decade. We started as a small team with big dreams and have grown into a trusted name in premium car detailing services.
+                        </p>
+                        <p style="color: #666; line-height: 1.8;">
+                            Our journey began with a simple mission: to provide every vehicle owner with the highest quality automotive care services, using only the finest products and most advanced techniques available in the industry.
+                        </p>
+                    </div>
+                    
+                    <!-- Our Mission -->
+                    <div>
+                        <h4 style="color: #333; margin-bottom: 1rem; font-size: 1.3rem; display: flex; align-items: center;">
+                            <span style="background: linear-gradient(45deg, #2c3e50, #34495e); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 0.75rem; font-size: 1.1rem;">🎯</span>
+                            Our Mission
+                        </h4>
+                        <p style="color: #666; line-height: 1.8; margin-bottom: 1rem;">
+                            To deliver exceptional automotive detailing services that exceed our customers' expectations while maintaining the highest standards of quality, professionalism, and customer satisfaction.
+                        </p>
+                        <p style="color: #666; line-height: 1.8;">
+                            We believe every vehicle deserves premium care, and we're committed to providing personalized service that brings out the best in your car's appearance and performance.
+                        </p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<!-- Contact Section -->
-<div id="contact" class="page-section">
-    <div class="container">
-        <div class="fade-in">
-            <h2 style="text-align: center; color: white; margin-bottom: 2rem; font-size: 2.5rem; margin-top: 0; padding-top: 20px;">Contact Us</h2>
+            
+            <!-- Our Values & Expertise -->
             <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                <h3 style="color: #333; margin-bottom: 1rem;">Get In Touch</h3>
-                <p style="color: #666; line-height: 1.8; margin-bottom: 1rem;">
-                    Ready to give your car the attention it deserves? Contact us today to schedule your appointment.
-                </p>
-                <div style="text-align: center;">
-                    <a href="mailto:alward.hafez.01@gmail.com" style="display: inline-block; background: linear-gradient(45deg, #2c3e50, #34495e); color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 10px; font-weight: bold; margin: 0.5rem;">
-                        Send Email
-                    </a>
+                <h3 style="color: #333; margin-bottom: 2rem; font-size: 1.5rem; text-align: center;">Why Choose Us</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <!-- Quality Products -->
+                    <div style="text-align: center; padding: 1.5rem; background: #f8f9fa; border-radius: 10px;">
+                        <div style="background: linear-gradient(45deg, #2c3e50, #34495e); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.3rem;">✨</div>
+                        <h4 style="color: #333; margin-bottom: 1rem;">Premium Products</h4>
+                        <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">We use only the highest quality, professional-grade products from trusted manufacturers to ensure superior results.</p>
+                    </div>
+                    
+                    <!-- Expert Team -->
+                    <div style="text-align: center; padding: 1.5rem; background: #f8f9fa; border-radius: 10px;">
+                        <div style="background: linear-gradient(45deg, #2c3e50, #34495e); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.3rem;">👥</div>
+                        <h4 style="color: #333; margin-bottom: 1rem;">Expert Team</h4>
+                        <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">Our skilled technicians are trained in the latest techniques and have years of experience in automotive detailing.</p>
+                    </div>
+                    
+                    <!-- Attention to Detail -->
+                    <div style="text-align: center; padding: 1.5rem; background: #f8f9fa; border-radius: 10px;">
+                        <div style="background: linear-gradient(45deg, #2c3e50, #34495e); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.3rem;">🔍</div>
+                        <h4 style="color: #333; margin-bottom: 1rem;">Attention to Detail</h4>
+                        <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">Every inch of your vehicle receives meticulous care, ensuring flawless results that exceed your expectations.</p>
+                    </div>
+                    
+                    <!-- Customer Satisfaction -->
+                    <div style="text-align: center; padding: 1.5rem; background: #f8f9fa; border-radius: 10px;">
+                        <div style="background: linear-gradient(45deg, #2c3e50, #34495e); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.3rem;">💯</div>
+                        <h4 style="color: #333; margin-bottom: 1rem;">Customer Satisfaction</h4>
+                        <p style="color: #666; line-height: 1.6; font-size: 0.95rem;">Your satisfaction is our priority. We stand behind our work with a satisfaction guarantee on all services.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+
+
+<!-- Contact Section -->
+<div id="contact" class="page-section">
+    <div class="container">
+        <div class="fade-in">
+            <h2 style="text-align: center; color: white; margin-bottom: 2rem; font-size: 2.5rem; margin-top: 0; padding-top: 20px;">Contact Us</h2>
+            
+            <!-- Contact Information Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                
+                <!-- Contact Details Card -->
+                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                    <h3 style="color: #333; margin-bottom: 1.5rem; font-size: 1.5rem; text-align: center;">Get In Touch</h3>
+                    <p style="color: #666; line-height: 1.8; margin-bottom: 2rem; text-align: center;">
+                        Ready to give your car the attention it deserves? Contact us today to schedule your appointment.
+                    </p>
+                    
+                    <!-- Contact Methods -->
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <!-- Phone -->
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem; padding: 0.75rem; background: #f8f9fa; border-radius: 10px;">
+                            <div style="background: linear-gradient(45deg, #2c3e50, #34495e); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.2rem;">📞</div>
+                            <div>
+                                <h4 style="margin: 0; color: #333; font-size: 1rem;">Phone</h4>
+                                <a href="tel:+1234567890" style="color: #2c3e50; text-decoration: none; font-weight: 500;">(123) 456-7890</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem; padding: 0.75rem; background: #f8f9fa; border-radius: 10px;">
+                            <div style="background: linear-gradient(45deg, #2c3e50, #34495e); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.2rem;">✉️</div>
+                            <div>
+                                <h4 style="margin: 0; color: #333; font-size: 1rem;">Email</h4>
+                                <a href="mailto:123abc@gmail.com" style="color: #2c3e50; text-decoration: none; font-weight: 500;">123abc@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Location -->
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem; padding: 0.75rem; background: #f8f9fa; border-radius: 10px;">
+                            <div style="background: linear-gradient(45deg, #2c3e50, #34495e); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.2rem;">📍</div>
+                            <div>
+                                <h4 style="margin: 0; color: #333; font-size: 1rem;">Location</h4>
+                                <p style="margin: 0; color: #666; font-size: 0.9rem;">123 Auto Care Street<br>Detailing District, DC 12345</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Hours -->
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem; padding: 0.75rem; background: #f8f9fa; border-radius: 10px;">
+                            <div style="background: linear-gradient(45deg, #2c3e50, #34495e); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.2rem;">🕒</div>
+                            <div>
+                                <h4 style="margin: 0; color: #333; font-size: 1rem;">Business Hours</h4>
+                                <p style="margin: 0; color: #666; font-size: 0.9rem;">Mon-Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 4:00 PM<br>Sun: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
+
     </div> <!-- End of main-content -->
+
+
 
 <!-- Social Media Footer -->
     <div class="social-footer">
@@ -2126,11 +3906,20 @@
                 document.body.style.userSelect = ''; // Restore text selection
             };
 
-            // Desktop: Only allow dragging from the slider handle
+            // Desktop: Allow clicking anywhere on slider (line + handle) OR entire container
             slider.addEventListener('mousedown', e => {
                 e.stopPropagation(); // Prevent event bubbling to container
                 moveSlider(e.clientX);
                 startDrag();
+            });
+
+            // Desktop: Also allow clicking anywhere on the container (like before)
+            container.addEventListener('mousedown', e => {
+                // Only for desktop - check if it's not a touch device
+                if (!('ontouchstart' in window)) {
+                    moveSlider(e.clientX);
+                    startDrag();
+                }
             });
 
             // Touch support - Only from slider handle
@@ -2227,6 +4016,23 @@
                 top: 0,
                 behavior: 'smooth'
             });
+        }
+
+        // Function to scroll to booking system when "Book Now" is clicked
+        function scrollToBooking() {
+            // First ensure we're on the services section
+            showSection('services', null);
+            
+            // Wait a moment for the section to load, then scroll to booking system
+            setTimeout(() => {
+                const bookingSystem = document.getElementById('bookingSystem');
+                if (bookingSystem) {
+                    bookingSystem.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }
+            }, 100);
         }
 
         // Initialize the website
@@ -2334,6 +4140,28 @@
             }
         });
 
+        // Intersection Observer for Process Timeline Animation
+        const processTimeline = document.querySelector('.process-timeline');
+        
+        if (processTimeline) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add animate class when the timeline is visible
+                        processTimeline.classList.add('animate');
+                    } else {
+                        // Remove animate class when the timeline is not visible
+                        processTimeline.classList.remove('animate');
+                    }
+                });
+            }, {
+                threshold: 0.3, // Trigger when 30% of the element is visible
+                rootMargin: '0px 0px -50px 0px' // Start animation slightly before fully visible
+            });
+
+            observer.observe(processTimeline);
+        }
+
 
 
 
@@ -2375,7 +4203,8 @@
             this.bookings = this.loadBookings();
             this.selectedTimeSlot = null;
             this.selectedDate = null;
-            this.selectedService = null;
+            this.selectedServices = [];
+            this.totalPrice = 0;
             this.currentStep = 1;
             this.currentCalendarDate = new Date();
             this.initializeSystem();
@@ -2394,9 +4223,12 @@
             if (prevMonth) prevMonth.addEventListener('click', () => this.navigateMonth(-1));
             if (nextMonth) nextMonth.addEventListener('click', () => this.navigateMonth(1));
             
-            // Service selection
-            document.querySelectorAll('.service-option').forEach(option => {
-                option.addEventListener('click', () => this.selectService(option));
+            // Service selection - use event delegation to ensure it works
+            document.addEventListener('click', (e) => {
+                const serviceOption = e.target.closest('.service-option');
+                if (serviceOption) {
+                    this.selectService(serviceOption);
+                }
             });
         }
 
@@ -2507,11 +4339,15 @@
                 });
             }
             
-            // Highlight previously selected service
-            if (this.selectedService) {
+            // Highlight previously selected services
+            if (this.selectedServices && this.selectedServices.length > 0) {
                 document.querySelectorAll('.service-option').forEach(option => {
-                    if (option.dataset.service === this.selectedService) {
+                    const service = option.dataset.service;
+                    const checkbox = option.querySelector('input[type="checkbox"]');
+                    
+                    if (this.selectedServices.some(selected => selected.service === service)) {
                         option.classList.add('selected');
+                        checkbox.checked = true;
                     }
                 });
             }
@@ -2562,20 +4398,56 @@
         }
 
         selectService(optionElement) {
-            // Remove previous selection
-            document.querySelectorAll('.service-option').forEach(opt => opt.classList.remove('selected'));
+            // Prevent checkbox click from triggering twice
+            const checkbox = optionElement.querySelector('input[type="checkbox"]');
             
-            // Select new service
-            optionElement.classList.add('selected');
-            this.selectedService = optionElement.dataset.service;
+            // Toggle checkbox state
+            checkbox.checked = !checkbox.checked;
+            
+            // Update visual selection state
+            if (checkbox.checked) {
+                optionElement.classList.add('selected');
+            } else {
+                optionElement.classList.remove('selected');
+            }
+            
+            // Update selected services array
+            this.updateSelectedServices();
             
             // Update selection display
             this.updateSelectionDisplay();
             
-            // If we're going back to change the service, don't auto-advance
-            if (this.currentStep === 3) {
-                // Auto-advance to next step after a longer delay
-                setTimeout(() => this.nextStep(), 800);
+            // Show/hide continue button based on selections
+            this.updateServiceNavigation();
+        }
+
+        updateSelectedServices() {
+            this.selectedServices = [];
+            this.totalPrice = 0;
+            
+            document.querySelectorAll('.service-option input[type="checkbox"]:checked').forEach(checkbox => {
+                const optionElement = checkbox.closest('.service-option');
+                const service = optionElement.dataset.service;
+                const price = parseInt(optionElement.dataset.price);
+                
+                this.selectedServices.push({
+                    service: service,
+                    price: price,
+                    name: optionElement.querySelector('.service-name').textContent
+                });
+                
+                this.totalPrice += price;
+            });
+        }
+
+        updateServiceNavigation() {
+            const nextBtn = document.getElementById('serviceNextBtn');
+            if (nextBtn) {
+                if (this.selectedServices.length > 0) {
+                    nextBtn.style.display = 'block';
+                } else {
+                    nextBtn.style.display = 'none';
+                }
             }
         }
 
@@ -2593,15 +4465,14 @@
                 document.getElementById('timeSelection').textContent = formattedTime;
             }
             
-            // Update service selection
-            if (this.selectedService) {
-                const serviceNames = {
-                    'basic': 'Basic Wash',
-                    'standard': 'Standard Polish',
-                    'premium': 'Premium Detail',
-                    'ultimate': 'Ultimate Package'
-                };
-                document.getElementById('serviceSelection').textContent = serviceNames[this.selectedService] || this.selectedService;
+            // Update service selection - show multiple services
+            if (this.selectedServices && this.selectedServices.length > 0) {
+                const serviceText = this.selectedServices.length === 1 
+                    ? this.selectedServices[0].name
+                    : `${this.selectedServices.length} services selected`;
+                document.getElementById('serviceSelection').textContent = serviceText;
+            } else {
+                document.getElementById('serviceSelection').textContent = '';
             }
             
             // Update details selection (show if form is filled)
@@ -2714,7 +4585,8 @@
                 customerName: document.getElementById('customerName').value.trim(), 
                 phone: document.getElementById('phone').value.trim(), 
                 email: document.getElementById('email').value.trim(), 
-                service: this.selectedService, 
+                services: this.selectedServices, 
+                totalPrice: this.totalPrice,
                 date: this.selectedDate, 
                 time: this.selectedTimeSlot, 
                 carDetails: document.getElementById('carDetails').value.trim(), 
@@ -2738,13 +4610,21 @@
             document.getElementById('bookingForm').reset(); 
             this.selectedTimeSlot = null; 
             this.selectedDate = null; 
-            this.selectedService = null;
+            this.selectedServices = [];
+            this.totalPrice = 0;
             this.currentStep = 1;
             
             // Reset UI
             document.querySelectorAll('.time-slot.selected').forEach(slot => slot.classList.remove('selected')); 
             document.querySelectorAll('.calendar-day.selected').forEach(day => day.classList.remove('selected')); 
             document.querySelectorAll('.service-option.selected').forEach(service => service.classList.remove('selected'));
+            document.querySelectorAll('.service-option input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+            
+            // Hide service navigation button
+            const serviceNextBtn = document.getElementById('serviceNextBtn');
+            if (serviceNextBtn) {
+                serviceNextBtn.style.display = 'none';
+            }
             
             // Clear selection displays
             document.getElementById('dateSelection').textContent = '';
@@ -2780,7 +4660,7 @@
             switch(this.currentStep) {
                 case 1: return this.selectedDate !== null;
                 case 2: return this.selectedTimeSlot !== null;
-                case 3: return this.selectedService !== null;
+                case 3: return this.selectedServices && this.selectedServices.length > 0;
                 case 4: return this.isFormComplete();
                 case 5: return false; // No next step on final step
                 default: return false;
@@ -2803,20 +4683,14 @@
             const formattedTime = this.formatTime(this.selectedTimeSlot);
             document.getElementById('summaryDateTime').textContent = `${formattedDate} at ${formattedTime}`;
             
-            // Service
-            const serviceNames = {
-                'basic': 'Basic Wash',
-                'standard': 'Standard Polish',
-                'premium': 'Premium Detail',
-                'ultimate': 'Ultimate Package'
-            };
-            const servicePrices = {
-                'basic': '$25',
-                'standard': '$75',
-                'premium': '$150',
-                'ultimate': '$300'
-            };
-            document.getElementById('summaryService').textContent = `${serviceNames[this.selectedService]} - ${servicePrices[this.selectedService]}`;
+            // Services - show multiple services
+            let servicesText = '';
+            if (this.selectedServices && this.selectedServices.length > 0) {
+                servicesText = this.selectedServices.map(service => 
+                    `${service.name} - $${service.price}`
+                ).join(', ');
+            }
+            document.getElementById('summaryService').textContent = servicesText;
             
             // Customer
             const name = document.getElementById('customerName').value.trim();
@@ -2840,8 +4714,8 @@
                 document.getElementById('summaryNotesItem').style.display = 'none';
             }
             
-            // Total
-            document.getElementById('summaryTotal').textContent = servicePrices[this.selectedService];
+            // Total - calculate from multiple services
+            document.getElementById('summaryTotal').textContent = `$${this.totalPrice}`;
             
             // Update confirm selection display
             document.getElementById('confirmSelection').textContent = 'Ready';
