@@ -226,6 +226,55 @@
                 text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
                 font-weight: 600;
             }
+
+            /* Mobile menu transparency when navbar is transparent */
+            .navbar.mobile-transparent .mobile-menu span,
+            .navbar.mobile-semi-transparent .mobile-menu span {
+                background: rgba(0, 0, 0, 0.7) !important;
+                box-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+            }
+            
+            .navbar.mobile-semi-transparent .mobile-menu span {
+                background: rgba(0, 0, 0, 0.5) !important;
+            }
+
+            /* Mobile menu dropdown transparency when navbar is transparent */
+            .navbar.mobile-transparent .nav-links,
+            .navbar.mobile-semi-transparent .nav-links {
+                background: rgba(255, 255, 255, 0.4) !important;
+                backdrop-filter: blur(8px);
+                box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            }
+            
+            .navbar.mobile-semi-transparent .nav-links {
+                background: rgba(255, 255, 255, 0.6) !important;
+                backdrop-filter: blur(12px);
+                box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            }
+
+            /* Make navbar less transparent when mobile menu is open - STRONGER SPECIFICITY */
+            .navbar.mobile-transparent:has(.nav-links.active) {
+                background: rgba(255, 255, 255, 0.7) !important;
+                backdrop-filter: blur(15px) !important;
+            }
+            
+            .navbar.mobile-semi-transparent:has(.nav-links.active) {
+                background: rgba(255, 255, 255, 0.8) !important;
+                backdrop-filter: blur(18px) !important;
+            }
+
+            /* Make dropdown menu less transparent when it is open - EXACTLY match navbar */
+            .navbar.mobile-transparent .nav-links.active {
+                background: rgba(255, 255, 255, 0.7) !important;
+                backdrop-filter: blur(15px);
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+            
+            .navbar.mobile-semi-transparent .nav-links.active {
+                background: rgba(255, 255, 255, 0.8) !important;
+                backdrop-filter: blur(18px);
+                box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            }
         }
 
         .navbar.scrolled .logo img {
@@ -1007,9 +1056,6 @@
             }
         }
 
-        .reviews-track:hover {
-            animation-play-state: paused;
-        }
 
         .review-card {
             background: white;
@@ -1445,12 +1491,14 @@
     /* Booking Styles - Mobile First Design */
     .booking-section { 
         background: white; 
-        padding: 0.8rem; 
-        margin: 0.8rem 0; 
-        border-radius: 16px; 
-        box-shadow: 0 8px 24px rgba(0,0,0,0.1); 
-        transform: scale(0.9);
+        padding: 2rem; 
+        margin: 1.5rem auto; 
+        border-radius: 20px; 
+        box-shadow: 0 12px 32px rgba(0,0,0,0.15); 
+        transform: scale(1.0);
         transform-origin: top center;
+        max-width: calc(100vw - 3rem); /* Match service cards width */
+        width: 100%;
     }
     
     .booking-header { 
@@ -1477,27 +1525,29 @@
         margin: 0 auto; 
         background: transparent; 
         border-radius: 0; 
-        padding: 0; 
+        padding: 1rem; 
     }
     
     /* Step Indicator */
     .booking-steps {
         display: flex;
         justify-content: center;
-        margin-bottom: 1.5rem;
-        padding: 0 0.8rem;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
         flex-wrap: wrap;
-        gap: 0.8rem;
+        gap: 0.5rem;
     }
     
     .step {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 0 0.5rem;
+        margin: 0 0.3rem;
         cursor: pointer;
         transition: all 0.3s ease;
         position: relative;
+        padding: 0.8rem;
+        min-width: 70px;
     }
     
     .step:hover {
@@ -1526,8 +1576,8 @@
     }
     
     .step-number {
-        width: 36px;
-        height: 36px;
+        width: 48px;
+        height: 48px;
         border-radius: 50%;
         background: #e1e8ed;
         color: #666;
@@ -1535,8 +1585,8 @@
         align-items: center;
         justify-content: center;
         font-weight: 700;
-        font-size: 0.9rem;
-        margin-bottom: 0.4rem;
+        font-size: 1.1rem;
+        margin-bottom: 0.6rem;
         transition: all 0.3s ease;
     }
     
@@ -1552,11 +1602,11 @@
     }
     
     .step-label {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         font-weight: 600;
         color: #666;
         text-align: center;
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.3rem;
     }
     
     .step.active .step-label {
@@ -2515,18 +2565,55 @@
         transform: rotate(-45deg) translate(7px, -6px);
     }
 
+    /* Desktop Booking Section Enhancements */
+    @media (min-width: 769px) {
+        .booking-section {
+            padding: 4rem !important;
+            margin: 2rem auto !important;
+            transform: scale(1.3) !important;
+            transform-origin: top center !important;
+            max-width: 600px !important;
+        }
+        
+        .booking-system {
+            padding: 1.5rem !important;
+        }
+        
+        .booking-steps {
+            gap: 0.8rem !important;
+            margin-bottom: 2.5rem !important;
+        }
+        
+        .step {
+            padding: 1.2rem !important;
+            min-width: 90px !important;
+        }
+        
+        .step-number {
+            width: 64px !important;
+            height: 64px !important;
+            font-size: 1.4rem !important;
+        }
+        
+        .step-label {
+            font-size: 1.1rem !important;
+        }
+    }
+
     /* Mobile Calendar Fixes */
     .booking-section {
-        transform: scale(0.85) !important; /* Even smaller on mobile */
+        transform: scale(1.0) !important; /* Same size as service cards */
         transform-origin: top center !important;
-        margin: 0.5rem 0 !important;
-        padding: 0.6rem !important;
+        margin: 1rem auto !important; /* Center it */
+        padding: 1.5rem !important; /* Match service card padding */
+        max-width: calc(100vw - 3rem) !important; /* Match service card width - same as grid container */
+        width: 100% !important; /* Full width within container */
     }
 
     .booking-system {
         max-width: 100% !important; /* Full width on mobile */
         margin: 0 !important;
-        padding: 0.4rem !important; /* Reduced padding */
+        padding: 1rem !important; /* Match service card content padding */
         background: transparent !important; /* Remove white background */
     }
 
@@ -3373,37 +3460,37 @@
         </div>
 
         <!-- Booking System Section -->
-        <div class="fade-in">
+        <div>
             <h2 style="text-align: center; color: white; margin-bottom: 2rem; font-size: 2.5rem;">Book Your Service</h2>
         </div>
-        <div class="booking-section fade-in">
-            <div class="booking-header fade-in-slow">
+        <div class="booking-section">
+            <div class="booking-header">
                 <p>Max 2 appointments per day. Each session 2–4 hours. Available 9:00–17:00.</p>
             </div>
             <div class="booking-system" id="bookingSystem">
                 <!-- Step Indicator -->
-                <div class="booking-steps fade-in-slow">
-                    <div class="step active fade-in" id="step1" onclick="bookingSystem.goToStep(1)">
+                <div class="booking-steps">
+                    <div class="step active" id="step1" onclick="bookingSystem.goToStep(1)">
                         <div class="step-number">1</div>
                         <div class="step-label">Date</div>
                         <div class="step-selection" id="dateSelection"></div>
                     </div>
-                    <div class="step fade-in-delayed" id="step2" onclick="bookingSystem.goToStep(2)">
+                    <div class="step" id="step2" onclick="bookingSystem.goToStep(2)">
                         <div class="step-number">2</div>
                         <div class="step-label">Time</div>
                         <div class="step-selection" id="timeSelection"></div>
                     </div>
-                    <div class="step fade-in-delayed" id="step3" onclick="bookingSystem.goToStep(3)">
+                    <div class="step" id="step3" onclick="bookingSystem.goToStep(3)">
                         <div class="step-number">3</div>
                         <div class="step-label">Service</div>
                         <div class="step-selection" id="serviceSelection"></div>
                     </div>
-                    <div class="step fade-in-delayed" id="step4" onclick="bookingSystem.goToStep(4)">
+                    <div class="step" id="step4" onclick="bookingSystem.goToStep(4)">
                         <div class="step-number">4</div>
                         <div class="step-label">Details</div>
                         <div class="step-selection" id="detailsSelection"></div>
                     </div>
-                    <div class="step fade-in-delayed" id="step5" onclick="bookingSystem.goToStep(5)">
+                    <div class="step" id="step5" onclick="bookingSystem.goToStep(5)">
                         <div class="step-number">5</div>
                         <div class="step-label">Confirm</div>
                         <div class="step-selection" id="confirmSelection"></div>
@@ -3421,7 +3508,7 @@
                 </div>
 
                 <!-- Step 1: Date Selection -->
-                <div class="calendar-container fade-in-slow" id="dateStep">
+                <div class="calendar-container" id="dateStep">
                     <h3 style="margin-bottom: 1rem; color: #2c3e50; font-size: 1.2rem;">Choose Your Date</h3>
                     <div class="calendar-header">
                         <button type="button" class="calendar-nav" id="prevMonth">‹</button>
@@ -4267,6 +4354,17 @@
                 this.currentStep = stepNumber;
                 this.showCurrentStep();
                 this.updateStepIndicator();
+                
+                // Auto-scroll back to booking section after step completion
+                setTimeout(() => {
+                    const bookingSection = document.querySelector('.booking-section');
+                    if (bookingSection) {
+                        bookingSection.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }
+                }, 300);
             }
         }
 
@@ -4275,6 +4373,17 @@
                 this.currentStep++;
                 this.showCurrentStep();
                 this.updateStepIndicator();
+                
+                // Auto-scroll back to booking section after step completion
+                setTimeout(() => {
+                    const bookingSection = document.querySelector('.booking-section');
+                    if (bookingSection) {
+                        bookingSection.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }
+                }, 300);
             }
         }
 
@@ -4604,7 +4713,7 @@
         generateBookingId() { return 'CPB_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9); }
         formatTime(time24) { const [hours, minutes] = time24.split(':'); const hour = parseInt(hours); const ampm = hour >= 12 ? 'PM' : 'AM'; const hour12 = hour % 12 || 12; return `${hour12}:${minutes} ${ampm}`; }
         sendConfirmation(bookingData) { alert(`Confirmation sent to ${bookingData.email} and ${bookingData.phone}`); }
-        showSuccessMessage(message = null) { const successDiv = document.getElementById('successMessage'); const errorDiv = document.getElementById('errorMessage'); if (message) successDiv.querySelector('p').textContent = message; successDiv.style.display = 'block'; errorDiv.style.display = 'none'; setTimeout(() => { successDiv.style.display = 'none'; }, 4000); }
+        showSuccessMessage(message = null) { const successDiv = document.getElementById('successMessage'); const errorDiv = document.getElementById('errorMessage'); if (message) successDiv.querySelector('p').textContent = message; successDiv.style.display = 'block'; errorDiv.style.display = 'none'; setTimeout(() => { successDiv.style.display = 'none'; }, 100000); }
         showErrorMessage(message = 'Please check all fields and try again.') { const errorDiv = document.getElementById('errorMessage'); const successDiv = document.getElementById('successMessage'); errorDiv.querySelector('p').textContent = message; errorDiv.style.display = 'block'; successDiv.style.display = 'none'; setTimeout(() => { errorDiv.style.display = 'none'; }, 4000); }
         resetForm() { 
             document.getElementById('bookingForm').reset(); 
